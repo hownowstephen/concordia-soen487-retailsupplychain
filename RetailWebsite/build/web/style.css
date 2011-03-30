@@ -1,0 +1,43 @@
+/* 
+    Document   : style
+    Created on : Mar 28, 2011, 3:14:46 PM
+    Author     : stephen
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+body {
+margin: 0px;
+padding: 0px;
+height:100%; width:100%;
+}
+
+.container {
+    width:800px; padding:10px; margin:0px auto; min-height:100%;
+    border:1px solid #000; border-top:0px; border-bottom:0px;
+    overflow:auto;
+}
+.container h1 { border-bottom:1px solid #000; margin-top:0px; }
+
+.catalog-container { width:475px; float:left; }
+.order-container { width:300px; float:left; margin-left:25px; }
+
+h2 { margin:0px; border-bottom:1px solid #000; }
+h3{ color:#333; font-size:16px; margin:0px; }
+h3:first-child { margin-top:1em; }
+h3:last-child { margin-bottom:1em; }
+
+#catalog { margin-top:1em; overflow:auto; margin-bottom:20px; }
+
+.catalog-item { width:33%; float:left; padding-top:1em; cursor:pointer;  }
+.catalog-item:hover{ background:#BFFFC1; }
+.catalog-item .image { overflow:hidden; width:120px; height:120px; margin:0px auto; }
+.catalog-item .image img { width:100%; min-height:100%; }
+.catalog-item:nth-child(2n) { background:#eee; }
+.catalog-item:nth-child(2n):hover { background:#BFFFC1;  }
+
+.catalog-item h4 { padding:0px; margin:0px; padding-top:1em; }
+.catalog-item ul { list-style:none; padding:0px; margin:0px; padding-left:1em; }
+
+.footer { clear:both; border-top:1px solid #000; margin-top:10px; }
