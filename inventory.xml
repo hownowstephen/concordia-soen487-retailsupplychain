@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product>
+	<item>
+	<manufacturerName>B1</manufacturerName>
+	<productType>DVD Player</productType>
+	<unitPrice>111.1</unitPrice>
+	<quantity>200</quantity>
+	</item>
+	
+	<item>
+	<manufacturerName>B2</manufacturerName>
+	<productType>Video camera</productType>
+	<unitPrice>211.1</unitPrice>
+	<quantity>200</quantity>
+	</item>
+	
+	<item>
+	<manufacturerName>B2</manufacturerName>
+	<productType>Video camera</productType>
+	<unitPrice>211.1</unitPrice>
+	<quantity>200</quantity>
+	</item>
+
+	<item>
+	<manufacturerName>B3</manufacturerName>
+	<productType>TV</productType>
+	<unitPrice>311.1</unitPrice>
+	<quantity>200</quantity>
+	</item>
+</product>

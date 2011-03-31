@@ -12,6 +12,7 @@ import javax.xml.ws.WebServiceRef;
 import org.soen487.supplychain.warehouse.ItemShippingStatusList;
 import org.soen487.supplychain.warehouse.WarehouseService;
 
+
 /**
  *
  * @author jose
@@ -36,5 +37,21 @@ public class Retail {
         org.soen487.supplychain.warehouse.Warehouse port = service.getWarehousePort();
         return port.shipGoods(itemList, info);
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getCatalog")
+    public provideCatalog getCatalog() {
+        try {
+            provideCatalog productCatalog = new provideCatalog();
+            return productCatalog;
+        } catch(Exception e){
+            System.out.println("error: " + e.getMessage());
+            return null;
+        }
+    }
+
+
 
 }

@@ -35,6 +35,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Item }
+     * 
+     */
+    public Item createItem() {
+        return new Item();
+    }
+
+    /**
+     * Create an instance of {@link ItemList }
+     * 
+     */
+    public ItemList createItemList() {
+        return new ItemList();
+    }
+
+    /**
+     * Create an instance of {@link ShipGoods }
+     * 
+     */
+    public ShipGoods createShipGoods() {
+        return new ShipGoods();
+    }
+
+    /**
      * Create an instance of {@link ShipGoodsResponse }
      * 
      */
@@ -51,35 +75,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Item }
-     * 
-     */
-    public Item createItem() {
-        return new Item();
-    }
-
-    /**
      * Create an instance of {@link ItemShippingStatusList }
      * 
      */
     public ItemShippingStatusList createItemShippingStatusList() {
         return new ItemShippingStatusList();
-    }
-
-    /**
-     * Create an instance of {@link ShipGoods }
-     * 
-     */
-    public ShipGoods createShipGoods() {
-        return new ShipGoods();
-    }
-
-    /**
-     * Create an instance of {@link ItemList }
-     * 
-     */
-    public ItemList createItemList() {
-        return new ItemList();
     }
 
     /**

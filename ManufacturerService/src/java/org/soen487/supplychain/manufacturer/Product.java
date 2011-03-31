@@ -17,7 +17,7 @@ import java.io.*;
 public class Product {
 
     // Location of the products xml file
-    private static final String PRODUCT_XML = "/root/NetBeansProjects/SupplyChainManagementClient/web/products.xml";
+    private static final String PRODUCT_XML = "c:/Java/Soen487-retailsupply/liste.xml";
     // Member variables
     private String productName;
     private String manufacturerName;
@@ -36,16 +36,18 @@ public class Product {
 
             Document doc = db.parse(is);
             
-            NodeList nodes = doc.getElementsByTagName("product");
+            NodeList nodes = doc.getElementsByTagName("item");
             System.out.println(nodes.getLength());
             // Loop through and print out all of the title elements
             for (int i = 0; i < nodes.getLength(); i++) {
                 Element element = (Element) nodes.item(i);
-                if(element.getAttribute("name").equals(productName)){
+                //System.out.println("inside loop"+getTextValue(element,"productType"));
+                if(getTextValue(element,"productType").equals(productName)){
                     setManufacturerName(getTextValue(element,"manufacturerName"));
                     setProductType(getTextValue(element,"productType"));
                     setUnitPrice(getFloatValue(element,"unitPrice"));
                     setProductName(productName);
+                    //System.out.println(getTextValue(element,"manufacturerName"));
                     break;
                 }
             }
@@ -54,7 +56,9 @@ public class Product {
         }
         
     }
-    
+
+
+
     private String getTextValue(Element ele, String tagName) {
             String textVal = null;
             NodeList nl = ele.getElementsByTagName(tagName);

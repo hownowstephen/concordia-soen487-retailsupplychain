@@ -43,6 +43,18 @@ public class Manufacturer {
         }
     }
 
+    @WebMethod(operationName = "getProductQuantity")
+    public ProductQuantity getProductQuantity(@WebParam(name = "aProductName")
+    String aProductName) {
+        try {
+            ProductQuantity productQ = new ProductQuantity(aProductName);
+            return productQ;
+        } catch(Exception e){
+            System.out.println("error: " + e.getMessage());
+            return null;
+        }
+    }
+
     /**
      * Web service operation
      */
