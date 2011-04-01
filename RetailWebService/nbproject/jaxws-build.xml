@@ -40,7 +40,7 @@
     </target>
     <target name="wsimport-client-WarehouseService" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/WarehouseService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WarehouseService" destdir="${build.generated.dir}/jax-wsCache/WarehouseService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WarehouseService/wsdl/localhost_8080/WarehouseService/WarehouseService.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/WarehouseService/WarehouseService?wsdl" xnocompile="true" xendorsed="true">
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WarehouseService" destdir="${build.generated.dir}/jax-wsCache/WarehouseService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WarehouseService/wsdl/localhost_8080/WarehouseService/WarehouseService.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/WarehouseService/WarehouseService?wsdl" xnocompile="true" xendorsed="true" package="org.soen487.supplychain.retail.warehouse">
             <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WarehouseService/wsdl/localhost_8080/WarehouseService/WarehouseService.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/WarehouseService"/>
         </wsimport>
@@ -51,7 +51,7 @@
         </copy>
     </target>
     <target name="wsimport-client-clean-WarehouseService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/org/soen487/supplychain/warehouse"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/soen487/supplychain/retail/warehouse"/>
         <delete dir="${build.generated.dir}/jax-wsCache/WarehouseService"/>
     </target>
     <target name="wsimport-client-generate" depends="wsimport-client-WarehouseService"/>

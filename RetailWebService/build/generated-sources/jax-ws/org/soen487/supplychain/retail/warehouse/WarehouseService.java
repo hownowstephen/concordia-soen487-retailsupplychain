@@ -1,5 +1,5 @@
 
-package org.soen487.supplychain.warehouse;
+package org.soen487.supplychain.retail.warehouse;
 
 import java.net.MalformedURLException;
 import java.net.URL;

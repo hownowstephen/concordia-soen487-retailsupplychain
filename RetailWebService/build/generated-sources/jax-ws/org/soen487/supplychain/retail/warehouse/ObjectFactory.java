@@ -1,5 +1,5 @@
 
-package org.soen487.supplychain.warehouse;
+package org.soen487.supplychain.retail.warehouse;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the org.soen487.supplychain.warehouse package. 
+ * generated in the org.soen487.supplychain.retail.warehouse package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -28,42 +28,10 @@ public class ObjectFactory {
     private final static QName _ShipGoodsResponse_QNAME = new QName("http://warehouse.supplychain.soen487.org/", "shipGoodsResponse");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.soen487.supplychain.warehouse
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.soen487.supplychain.retail.warehouse
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link ShipGoodsResponse }
-     * 
-     */
-    public ShipGoodsResponse createShipGoodsResponse() {
-        return new ShipGoodsResponse();
-    }
-
-    /**
-     * Create an instance of {@link Customer }
-     * 
-     */
-    public Customer createCustomer() {
-        return new Customer();
-    }
-
-    /**
-     * Create an instance of {@link Item }
-     * 
-     */
-    public Item createItem() {
-        return new Item();
-    }
-
-    /**
-     * Create an instance of {@link ItemShippingStatusList }
-     * 
-     */
-    public ItemShippingStatusList createItemShippingStatusList() {
-        return new ItemShippingStatusList();
     }
 
     /**
@@ -75,11 +43,43 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Customer }
+     * 
+     */
+    public Customer createCustomer() {
+        return new Customer();
+    }
+
+    /**
+     * Create an instance of {@link ItemShippingStatusList }
+     * 
+     */
+    public ItemShippingStatusList createItemShippingStatusList() {
+        return new ItemShippingStatusList();
+    }
+
+    /**
      * Create an instance of {@link ItemList }
      * 
      */
     public ItemList createItemList() {
         return new ItemList();
+    }
+
+    /**
+     * Create an instance of {@link Item }
+     * 
+     */
+    public Item createItem() {
+        return new Item();
+    }
+
+    /**
+     * Create an instance of {@link ShipGoodsResponse }
+     * 
+     */
+    public ShipGoodsResponse createShipGoodsResponse() {
+        return new ShipGoodsResponse();
     }
 
     /**

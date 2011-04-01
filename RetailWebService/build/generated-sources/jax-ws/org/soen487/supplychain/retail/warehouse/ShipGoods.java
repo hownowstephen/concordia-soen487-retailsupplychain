@@ -1,5 +1,5 @@
 
-package org.soen487.supplychain.warehouse;
+package org.soen487.supplychain.retail.warehouse;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

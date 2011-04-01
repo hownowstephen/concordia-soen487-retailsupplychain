@@ -1,5 +1,5 @@
 
-package org.soen487.supplychain.warehouse;
+package org.soen487.supplychain.retail.warehouse;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -29,12 +29,12 @@ public interface Warehouse {
      * @param itemList
      * @param info
      * @return
-     *     returns org.soen487.supplychain.warehouse.ItemShippingStatusList
+     *     returns org.soen487.supplychain.retail.warehouse.ItemShippingStatusList
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "shipGoods", targetNamespace = "http://warehouse.supplychain.soen487.org/", className = "org.soen487.supplychain.warehouse.ShipGoods")
-    @ResponseWrapper(localName = "shipGoodsResponse", targetNamespace = "http://warehouse.supplychain.soen487.org/", className = "org.soen487.supplychain.warehouse.ShipGoodsResponse")
+    @RequestWrapper(localName = "shipGoods", targetNamespace = "http://warehouse.supplychain.soen487.org/", className = "org.soen487.supplychain.retail.warehouse.ShipGoods")
+    @ResponseWrapper(localName = "shipGoodsResponse", targetNamespace = "http://warehouse.supplychain.soen487.org/", className = "org.soen487.supplychain.retail.warehouse.ShipGoodsResponse")
     @Action(input = "http://warehouse.supplychain.soen487.org/Warehouse/shipGoodsRequest", output = "http://warehouse.supplychain.soen487.org/Warehouse/shipGoodsResponse")
     public ItemShippingStatusList shipGoods(
         @WebParam(name = "itemList", targetNamespace = "")
