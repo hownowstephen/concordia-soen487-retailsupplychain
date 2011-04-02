@@ -6,11 +6,14 @@
 package org.soen487.supplychain.warehouse;
 
 import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.annotation.*;
 
 /**
  *
  * @author root
  */
+@XmlRootElement
 public class ItemShippingStatusList {
 
     private ArrayList<ItemStatus> items;
@@ -23,6 +26,7 @@ public class ItemShippingStatusList {
         this.items.add(new ItemStatus(item,status));
     }
 
+    @XmlElement(name = "items")
     public ArrayList<ItemStatus> getItems() {
         return items;
     }

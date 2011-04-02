@@ -5,13 +5,16 @@
 
 package org.soen487.supplychain.warehouse;
 
+import javax.xml.bind.annotation.*;
+
 /**
  *
  * @author root
  */
+@XmlRootElement
 public class Item {
 
-    private String productName; 
+    private String productName;
     private String manufacturerName;
     private String productType;
     private float unitPrice;
@@ -28,6 +31,7 @@ public class Item {
         this.quantity = quantity;
     }
 
+    @XmlElement(name = "productName")
     public String getProductName() {
         return productName;
     }
@@ -36,6 +40,7 @@ public class Item {
         this.productName = productName;
     }
 
+    @XmlElement(name = "manufacturerName")
     public String getManufacturerName() {
         return manufacturerName;
     }
@@ -44,6 +49,7 @@ public class Item {
         this.manufacturerName = manufacturerName;
     }
 
+    @XmlElement(name = "productType")
     public String getProductType() {
         return productType;
     }
@@ -52,6 +58,7 @@ public class Item {
         this.productType = productType;
     }
 
+    @XmlElement(name = "quantity")
     public int getQuantity() {
         return quantity;
     }
@@ -60,6 +67,7 @@ public class Item {
         this.quantity = quantity;
     }
 
+    @XmlElement(name = "unitPrice")
     public float getUnitPrice() {
         return unitPrice;
     }

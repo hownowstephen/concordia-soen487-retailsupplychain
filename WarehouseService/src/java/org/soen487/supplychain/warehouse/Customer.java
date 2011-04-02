@@ -5,10 +5,13 @@
 
 package org.soen487.supplychain.warehouse;
 
+import javax.xml.bind.annotation.*;
+
 /**
  *
  * @author root
  */
+@XmlRootElement
 public class Customer {
 
     private int customerReferenceNumber;
@@ -32,6 +35,7 @@ public class Customer {
         this.country = country;
     }
 
+    @XmlElement(name = "city")
     public String getCity() {
         return city;
     }
@@ -40,6 +44,7 @@ public class Customer {
         this.city = city;
     }
 
+    @XmlElement(name = "country")
     public String getCountry() {
         return country;
     }
@@ -48,6 +53,7 @@ public class Customer {
         this.country = country;
     }
 
+    @XmlElement(name = "customerReferenceNumber")
     public int getCustomerReferenceNumber() {
         return customerReferenceNumber;
     }
@@ -56,6 +62,7 @@ public class Customer {
         this.customerReferenceNumber = customerReferenceNumber;
     }
 
+    @XmlElement(name = "name")
     public String getName() {
         return name;
     }
@@ -64,6 +71,7 @@ public class Customer {
         this.name = name;
     }
 
+    @XmlElement(name = "state")
     public String getState() {
         return state;
     }
@@ -72,6 +80,7 @@ public class Customer {
         this.state = state;
     }
 
+    @XmlElement(name = "street1")
     public String getStreet1() {
         return street1;
     }
@@ -80,6 +89,7 @@ public class Customer {
         this.street1 = street1;
     }
 
+    @XmlElement(name = "street2")
     public String getStreet2() {
         return street2;
     }
