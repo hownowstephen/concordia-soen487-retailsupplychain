@@ -9,17 +9,14 @@
 
 <html>
     <head>
-        <title>Order Products from XYZ Company</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="Cache-Control" content="no-cache">
-        <meta name="author" content="Stephen Young, Jose ">
+        <meta name="author" content="Stephen Young & Team">
         <link rel="stylesheet" type="text/css" href="style.css" />
-        <link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.3.2.css" />
         <script type="text/javascript" src="js/jquery-1.5.1.js"></script>
         <script type="text/javascript" src="js/jquery.soap.js"></script>
-        <script type="text/javascript" src="fancybox/jquery.fancybox-1.3.2.js"></script>
+        <title>Order Products from XYZ Company</title>
         <script type="text/javascript" src="js/catalog.js"></script>
-        <script type="text/javascript" src="js/order.js"></script>
     </head>
     <body>
         <div class="container">
