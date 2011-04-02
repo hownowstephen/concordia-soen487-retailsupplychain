@@ -9,7 +9,7 @@
     <client name="WarehouseService">
       <wsdl-url>http://localhost:8080/WarehouseService/WarehouseService?wsdl</wsdl-url>
       <local-wsdl-file>localhost_8080/WarehouseService/WarehouseService.wsdl</local-wsdl-file>
-      <package-name>org.soen487.supplychain.warehouse</package-name>
+      <package-name forceReplace="true">org.soen487.supplychain.retail.warehouse</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
         <wsimport-option>
@@ -31,6 +31,10 @@
         <wsimport-option>
           <wsimport-option-name>xendorsed</wsimport-option-name>
           <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>package</wsimport-option-name>
+          <wsimport-option-value>org.soen487.supplychain.retail.warehouse</wsimport-option-value>
         </wsimport-option>
       </wsimport-options>
     </client>

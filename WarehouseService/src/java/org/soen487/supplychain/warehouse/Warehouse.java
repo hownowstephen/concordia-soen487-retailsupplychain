@@ -26,7 +26,9 @@ import org.xml.sax.InputSource;
 @WebService()
 public class Warehouse {
 
-    private static final String INVENTORY_XML = "/root/NetBeansProjects/SupplyChainManagementClient/web/inventory.xml";
+   //private static final String INVENTORY_XML = "/root/NetBeansProjects/SupplyChainManagementClient/web/inventory.xml";
+    // NEED TO SET PROPER RELATIVE PATH TO inventory.xml
+    private static final String INVENTORY_XML = "../../../../../inventory.xml";
     private static final int REPLENISH_MINIMUM = 50;
     private static final int REPLENISH_AMOUNT = 200;
 
@@ -37,6 +39,7 @@ public class Warehouse {
     public ItemShippingStatusList shipGoods(@WebParam(name = "itemList")
     org.soen487.supplychain.warehouse.ItemList itemList, @WebParam(name = "info")
     Customer info) {
+        System.out.println(System.getProperty("user.dir")); // INDICATE THE WORKING DIR TO HLEP AT RELATIVE PATH SETTING
         File file = new File(INVENTORY_XML);
         try{
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -89,6 +92,8 @@ public class Warehouse {
 
             if(restock) replenish();
 
+            System.out.println("statusList generated - sending num items: "  + statusList.getItems().size());
+            System.out.println("statusList type: " + statusList);
             return statusList;
         } catch(Exception e){
             System.out.println("Error: " + e.getMessage());

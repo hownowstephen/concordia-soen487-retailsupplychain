@@ -5,12 +5,14 @@
 
 package org.soen487.supplychain.retail;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.ws.WebServiceRef;
-import org.soen487.supplychain.warehouse.ItemShippingStatusList;
-import org.soen487.supplychain.warehouse.WarehouseService;
+import org.soen487.supplychain.warehouse.*;
 
 
 /**
@@ -20,22 +22,18 @@ import org.soen487.supplychain.warehouse.WarehouseService;
 @WebService()
 public class Retail {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WarehouseService/WarehouseService.wsdl")
-    private WarehouseService service;
+
 
     /**
      * Web service operation
      */
     @WebMethod(operationName = "Retail")
-    public String Retail(@WebParam(name = "itemList")
-    org.soen487.supplychain.warehouse.ItemList itemList, @WebParam(name = "custInfo")
-    org.soen487.supplychain.warehouse.Customer custInfo) {
-        
-        return null;
-    }
+    public ItemShippingStatusList submitOrder(@WebParam(name = "itemList")
+    ItemList itemList, @WebParam(name = "custInfo")
+    Customer custInfo) {
+        submitOrder order = new submitOrder(itemList, custInfo);
 
-    private ItemShippingStatusList shipGoods(org.soen487.supplychain.warehouse.ItemList itemList, org.soen487.supplychain.warehouse.Customer info) {
-        org.soen487.supplychain.warehouse.Warehouse port = service.getWarehousePort();
-        return port.shipGoods(itemList, info);
+        return order.execute();
     }
 
     /**

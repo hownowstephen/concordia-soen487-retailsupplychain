@@ -5,10 +5,13 @@
 
 package org.soen487.supplychain.warehouse;
 
+import javax.xml.bind.annotation.*;
+
 /**
  *
  * @author root
  */
+@XmlRootElement
 public class ItemStatus {
 
     private Item item;
@@ -21,6 +24,7 @@ public class ItemStatus {
         this.status = status;
     }
 
+    @XmlElement(name = "item")
     public Item getItem() {
         return item;
     }
@@ -29,6 +33,7 @@ public class ItemStatus {
         this.item = item;
     }
 
+    @XmlElement(name = "status")
     public boolean isStatus() {
         return status;
     }
