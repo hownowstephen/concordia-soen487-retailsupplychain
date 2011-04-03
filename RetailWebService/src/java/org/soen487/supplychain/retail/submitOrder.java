@@ -60,9 +60,6 @@ public class submitOrder {
         }
     }
 
-    private void updateList() {
-    }
-
     private static ItemShippingStatusList shipGoods(org.soen487.supplychain.warehouse.ItemList itemList, org.soen487.supplychain.warehouse.Customer info) {
         org.soen487.supplychain.warehouse.WarehouseService service = new org.soen487.supplychain.warehouse.WarehouseService();
         org.soen487.supplychain.warehouse.Warehouse port = service.getWarehousePort();
