@@ -5,9 +5,6 @@
 
 package org.soen487.supplychain.retail;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -40,16 +37,17 @@ public class Retail {
      * Web service operation
      */
     @WebMethod(operationName = "getCatalog")
-    public provideCatalog getCatalog() {
+
+    public productCatalog getCatalog() {
         try {
-            provideCatalog productCatalog = new provideCatalog();
+            productCatalog productCatalog = new productCatalog();
+            System.out.println("in webmethod");
             return productCatalog;
+            
         } catch(Exception e){
             System.out.println("error: " + e.getMessage());
             return null;
         }
     }
-
-
 
 }
