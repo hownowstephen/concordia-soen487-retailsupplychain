@@ -155,7 +155,7 @@ public class Warehouse {
     }
 
     @WebMethod(operationName= "getNameForCatalog")
-    public static List getNameForCatalog(){
+    public List getNameForCatalog(){
          try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
