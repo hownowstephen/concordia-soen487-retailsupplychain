@@ -15,13 +15,15 @@ import javax.xml.bind.annotation.*;
 public class ItemStatus {
 
     private Item item;
-    private boolean status;
+    private int shipped;
+    private int not_shipped;
 
     public ItemStatus() {}
 
-    public ItemStatus(Item item, boolean status) {
+    public ItemStatus(Item item, int quantity) {
         this.item = item;
-        this.status = status;
+        this.shipped = quantity;
+        this.not_shipped = 0;
     }
 
     @XmlElement(name = "item")
@@ -33,13 +35,22 @@ public class ItemStatus {
         this.item = item;
     }
 
-    @XmlElement(name = "status")
-    public boolean isStatus() {
-        return status;
+    @XmlElement(name = "shipped")
+    public int getShippedQuatity(){
+        return shipped;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setShippedQuatity(int quantity) {
+        this.shipped = quantity;
+    }
+
+    @XmlElement(name = "not_shipped")
+    public int getNot_shipped(){
+        return not_shipped;
+    }
+
+    public void setNot_shipped(int quantity) {
+        this.not_shipped = quantity;
     }
 
 }

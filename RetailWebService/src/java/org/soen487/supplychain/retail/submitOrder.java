@@ -39,11 +39,11 @@ public class submitOrder {
         list_stat.getItems();
 
         // call the warehouses in the random ordered list
-//        for(Integer rand : warehouse_indexes){
-//            list_stat = warehouse_call(itemList, custInfo, rand.intValue());
-//
-//            //list_stat.
-//        }
+        for(Integer rand : warehouse_indexes){
+            list_stat = warehouse_call(itemList, custInfo, rand.intValue());
+            updateList(list_stat, itemList);
+            
+        }
         return null;
     }
 
@@ -57,6 +57,15 @@ public class submitOrder {
                 return shipGoods(itemList, custInfo);
             default:
                 return null;
+        }
+    }
+
+    private void updateList(ItemShippingStatusList shipped_list, ItemList order_list) {
+        
+        for(ItemStatus item_stat : shipped_list.getItems()){
+            item_stat.getItem().getProductName();
+            item_stat.getShippedQuantity();
+
         }
     }
 

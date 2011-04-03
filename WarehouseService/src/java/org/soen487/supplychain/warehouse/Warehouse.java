@@ -72,10 +72,12 @@ public class Warehouse {
                         if(newQuantity >= 0){
                             // Ship and remove the items from inventory
                             xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(newQuantity));
-                            statusList.add(tmp, true);
+                            statusList.add(tmp, tmp.getQuantity());
                         }else{
-                            // Don't ship, and make note in the list to restock
-                            statusList.add(tmp, false);
+                            // send available stock only
+                            statusList.add(tmp, (int) getFloatValue(xmlItem,"quantity"));
+                            xmlItem.getElementsByTagName("quantity").item(0).setTextContent("0");
+                            
                             restock = true;
                         }
                         break;
