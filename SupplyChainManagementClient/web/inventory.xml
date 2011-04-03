@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
+    Document   : inventory.xml
+    Created on : February 8, 2011, 1:29 PM
+    Author     : root
+    Description:
+        Purpose of the document follows.
+--><inventory>
+
+    <item name="Brand1TV">
+        <manufacturerName>Brand1</manufacturerName>
+        <productType>TV</productType>
+        <unitPrice>1400</unitPrice>
+        <quantity>180</quantity>
+    </item>
+    <item name="Brand2TV">
+        <manufacturerName>Brand2</manufacturerName>
+        <productType>TV</productType>
+        <unitPrice>250</unitPrice>
+        <quantity>0</quantity>
+    </item>
+    <item name="Brand3TV">
+        <manufacturerName>Brand3</manufacturerName>
+        <productType>TV</productType>
+        <unitPrice>2500</unitPrice>
+        <quantity>200</quantity>
+    </item>
+
+</inventory>

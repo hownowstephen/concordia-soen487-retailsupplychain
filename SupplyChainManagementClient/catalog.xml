@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/root/NetBeansProjects/SupplyChainManagementClient/WarehouseService.wsdl" uri="src/conf/xml-resources/web-service-references/WarehouseService/wsdl/WarehouseService.wsdl"/>
+    <system systemId="file:/root/NetBeansProjects/SupplyChainManagementClient/WarehouseService_schema1.xsd" uri="src/conf/xml-resources/web-service-references/WarehouseService/wsdl/WarehouseService_schema1.xsd"/>
+    <system systemId="http://localhost:8080/SupplyChainManagement/ManufacturerService?wsdl" uri="src/conf/xml-resources/web-service-references/ManufacturerService/wsdl/localhost_8080/SupplyChainManagement/ManufacturerService.wsdl"/>
+    <system systemId="http://localhost:8080/SupplyChainManagement/ManufacturerService?xsd=1" uri="src/conf/xml-resources/web-service-references/ManufacturerService/wsdl/localhost_8080/SupplyChainManagement/ManufacturerService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/SupplyChainManagement/WarehouseService?wsdl" uri="src/conf/xml-resources/web-service-references/WarehouseService/wsdl/localhost_8080/SupplyChainManagement/WarehouseService.wsdl"/>
+    <system systemId="http://localhost:8080/SupplyChainManagement/WarehouseService?xsd=1" uri="src/conf/xml-resources/web-service-references/WarehouseService/wsdl/localhost_8080/SupplyChainManagement/WarehouseService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/WarehouseService/WarehouseService?wsdl" uri="src/conf/xml-resources/web-service-references/WarehouseService/wsdl/localhost_8080/WarehouseService/WarehouseService.wsdl"/>
+    <system systemId="http://localhost:8080/WarehouseService/WarehouseService?xsd=1" uri="src/conf/xml-resources/web-service-references/WarehouseService/wsdl/localhost_8080/WarehouseService/WarehouseService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ManufacturerService/ManufacturerService?wsdl" uri="src/conf/xml-resources/web-service-references/ManufacturerService/wsdl/localhost_8080/ManufacturerService/ManufacturerService.wsdl"/>
+    <system systemId="http://localhost:8080/ManufacturerService/ManufacturerService?xsd=1" uri="src/conf/xml-resources/web-service-references/ManufacturerService/wsdl/localhost_8080/ManufacturerService/ManufacturerService.xsd_1.xsd"/>
+</catalog>
