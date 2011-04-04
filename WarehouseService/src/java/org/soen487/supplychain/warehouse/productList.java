@@ -6,7 +6,6 @@
 package org.soen487.supplychain.warehouse;
 
 import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**

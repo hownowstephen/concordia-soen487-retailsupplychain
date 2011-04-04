@@ -34,7 +34,6 @@ public class Warehouse {
     private static final String INVENTORY_XML = "C:/Java/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
     private static final int REPLENISH_MINIMUM = 50;
     private static final int REPLENISH_AMOUNT = 200;
-    private ArrayList<String> namesInCatalog;
 
     /**
      * Web service operation
@@ -155,12 +154,11 @@ public class Warehouse {
     }
 
     @WebMethod(operationName= "getNameForCatalog")
-    public static List getNameForCatalog(){
+    public productList getNameForCatalog(){
          try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             InputSource is = new InputSource();
-            System.out.println(System.getProperty("user.dir"));
             is.setCharacterStream(new FileReader(INVENTORY_XML));
 
             Document doc = db.parse(is);
@@ -170,17 +168,15 @@ public class Warehouse {
             // Loop through and print out all of the title elements
             for (int i = 0; i < nodes.getLength(); i++) {
                 Element element = (Element) nodes.item(i);
-                //System.out.println("inside loop"+getTextValue(element,"productType"));
-                if(!getTextValue(element,"productType").equals("")){
-                    System.out.println("in here! "+getTextValue(element,"productType"));
-                    current.add(getTextValue(element,"productType"));
-                    System.out.println(current.getItems());
-                    break;
-                }
+                current.add(getTextValue(element,"manufacturerName"));
+                current.add(getTextValue(element,"productType"));
+                current.add(Float.toString(getFloatValue(element,"unitPrice")));
             }
+            return current;
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
-        }       return null;
+        }
+         return null;
     }
 
 
