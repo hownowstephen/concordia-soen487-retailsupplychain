@@ -31,6 +31,7 @@ public class Warehouse {
    //private static final String INVENTORY_XML = "/root/NetBeansProjects/SupplyChainManagementClient/web/inventory.xml";
     // NEED TO SET PROPER RELATIVE PATH TO inventory.xml
     //private static final String INVENTORY_XML = "../../../../../inventory.xml";
+    //private static final String INVENTORY_XML = "C:/Users/Jose/Documents/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
     private static final String INVENTORY_XML = "C:/Java/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
     private static final int REPLENISH_MINIMUM = 50;
     private static final int REPLENISH_AMOUNT = 200;
@@ -75,12 +76,13 @@ public class Warehouse {
                         if(newQuantity >= 0){
                             // Ship and remove the items from inventory
                             xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(newQuantity));
-                            statusList.add(tmp, tmp.getQuantity());
+                            statusList.add(tmp, tmp.getQuantity(),0);
+                            System.out.println("item: " + tmp.getProductName() + " shipped: " + tmp.getQuantity() + " not shipped: " + 0);
                         }else{
                             // send available stock only
-                            statusList.add(tmp, (int) getFloatValue(xmlItem,"quantity"));
+                            statusList.add(tmp, (int) getFloatValue(xmlItem,"quantity"), -newQuantity);
                             xmlItem.getElementsByTagName("quantity").item(0).setTextContent("0");
-                            
+                            System.out.println("item: " + tmp.getProductName() + " shipped: " + (int) getFloatValue(xmlItem,"quantity") + " not shipped: " + -newQuantity);
                             restock = true;
                         }
                         break;
@@ -99,6 +101,9 @@ public class Warehouse {
 
             System.out.println("statusList generated - sending num items: "  + statusList.getItems().size());
             System.out.println("statusList type: " + statusList);
+            for(ItemStatus x : statusList.getItems()){
+                System.out.println(" --- shipGoods -->> shipped quantity: " + x.getShippedQuatity() + " ptoductName: " + x.getItem().getProductName());
+            }
             return statusList;
         } catch(Exception e){
             System.out.println("Error: " + e.getMessage());
@@ -122,6 +127,7 @@ public class Warehouse {
             for(int i=0;i<inventory.getLength();i++){
                 Element xmlItem = (Element) inventory.item(i);
                 if(getFloatValue(xmlItem,"quantity") < REPLENISH_MINIMUM){
+                    System.out.println("WAREHOUSE --- PERFOMED REPLENISH ----");
                     xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(REPLENISH_AMOUNT));
                 }
             }

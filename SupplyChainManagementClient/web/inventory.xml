@@ -10,13 +10,13 @@
         <manufacturerName>Brand1</manufacturerName>
         <productType>TV</productType>
         <unitPrice>1400</unitPrice>
-        <quantity>90</quantity>
+        <quantity>180</quantity>
     </item>
     <item name="Brand2TV">
         <manufacturerName>Brand2</manufacturerName>
         <productType>TV</productType>
         <unitPrice>250</unitPrice>
-        <quantity>100</quantity>
+        <quantity>0</quantity>
     </item>
     <item name="Brand3TV">
         <manufacturerName>Brand3</manufacturerName>
