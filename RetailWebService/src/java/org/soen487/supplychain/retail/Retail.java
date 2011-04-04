@@ -24,7 +24,7 @@ public class Retail {
     /**
      * Web service operation
      */
-    @WebMethod(operationName = "Retail")
+    @WebMethod(operationName = "submitOrder")
     public ItemShippingStatusList submitOrder(@WebParam(name = "itemList")
     ItemList itemList, @WebParam(name = "custInfo")
     Customer custInfo) {

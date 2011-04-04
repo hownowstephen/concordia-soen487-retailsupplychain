@@ -21,8 +21,13 @@ public class ItemShippingStatusList {
         this.items = new ArrayList<ItemStatus>();
     }
 
-    public void add(Item item, int quantity){
-        this.items.add(new ItemStatus(item,quantity));
+    public ItemShippingStatusList(ArrayList<ItemStatus> list) {
+        this.items = list;
+    }
+
+    public void add(Item item, int shipped, int not_shipped){
+        System.out.println("ItemShippingStatusList >> item: " + item + " shipped: " + shipped + " not shipped: " + not_shipped);
+        this.items.add(new ItemStatus(item,shipped,not_shipped));
     }
 
     @XmlElement(name = "items")

@@ -64,12 +64,15 @@ public class Main {
         list.add(second);
 
 //System.out.println("type " + shipGoods(items,c));
-        ItemShippingStatusList shipResults = shipGoods(items,c);
+        //ItemShippingStatusList shipResults = shipGoods(items,c); // Test Warehouse
+        ItemShippingStatusList shipResults = submitOrder(items,c); // Test Warehouse
         ArrayList<ItemStatus> itemResults = (ArrayList<ItemStatus>)shipResults.getItems();
 
         for(int i=0;i<itemResults.size();i++){
             System.out.println("Item: " + itemResults.get(i).getItem().getProductName());
             System.out.println("quantity: " + itemResults.get(i).getItem().getQuantity());
+            System.out.println("quantity shipped: " + itemResults.get(i).getShipped());
+            System.out.println("quantity not shipped: " + itemResults.get(i).getNotShipped());
         }
 
     }
@@ -96,6 +99,12 @@ public class Main {
         org.soen487.supplychain.warehouse.WarehouseService service = new org.soen487.supplychain.warehouse.WarehouseService();
         org.soen487.supplychain.warehouse.Warehouse port = service.getWarehousePort();
         return port.shipGoods(itemList, info);
+    }
+
+    private static ItemShippingStatusList submitOrder(org.soen487.supplychain.warehouse.ItemList itemList, org.soen487.supplychain.warehouse.Customer custInfo) {
+        org.soen487.supplychain.retail.RetailService service = new org.soen487.supplychain.retail.RetailService();
+        org.soen487.supplychain.retail.Retail port = service.getRetailPort();
+        return port.submitOrder(itemList, custInfo);
     }
 
 }
