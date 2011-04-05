@@ -26,12 +26,12 @@ import org.xml.sax.InputSource;
  * @author root
  */
 @WebService()
-public class Warehouse {
+public class Warehouse_3 {
 
    //private static final String INVENTORY_XML = "/root/NetBeansProjects/SupplyChainManagementClient/web/inventory.xml";
     // NEED TO SET PROPER RELATIVE PATH TO inventory.xml
     //private static final String INVENTORY_XML = "../../../../../inventory.xml";
-    private static final String INVENTORY_XML = "C:/Users/Jose/Documents/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
+    private static final String INVENTORY_XML = "C:/Users/Jose/Documents/soen487-retailsupplychain/WarehouseService_3/src/java/org/soen487/supplychain/warehouse/inventory.xml";
     //private static final String INVENTORY_XML = "C:/Java/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
     private static final int REPLENISH_MINIMUM = 50;
     private static final int REPLENISH_AMOUNT = 200;
@@ -74,7 +74,7 @@ public class Warehouse {
                     if(tmp.getProductName().equals(xmlItem.getAttribute("name"))){
                         System.out.println("Found the product");
                         int newQuantity = (int) getFloatValue(xmlItem,"quantity") - tmp.getQuantity();
-                        System.out.println("*** W1 - newQuantity = " + newQuantity +" getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " tmp.getQuantity() = " + tmp.getQuantity());
+                        System.out.println("*** W3 - newQuantity = " + newQuantity +" getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " tmp.getQuantity() = " + tmp.getQuantity());
                         if(newQuantity >= 0){
                             // Ship and remove the items from inventory
                             xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(newQuantity));
@@ -129,9 +129,9 @@ public class Warehouse {
             NodeList inventory = doc.getElementsByTagName("item");
             for(int i=0;i<inventory.getLength();i++){
                 Element xmlItem = (Element) inventory.item(i);
-                System.out.println("WAREHOUSE 1 -- getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " item = " + xmlItem.getAttribute("name"));
+                System.out.println("WAREHOUSE 3 -- getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " item = " + xmlItem.getAttribute("name"));
                 if(getFloatValue(xmlItem,"quantity") < REPLENISH_MINIMUM){
-                    System.out.println("WAREHOUSE 1 --- PERFOMED REPLENISH ----");
+                    System.out.println("WAREHOUSE 3 --- PERFOMED REPLENISH ----");
                     xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(REPLENISH_AMOUNT));
                 }
             }

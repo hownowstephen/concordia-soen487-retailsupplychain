@@ -59,7 +59,7 @@ public class Main {
         second.setManufacturerName("Brand2");
         second.setProductType("TV");
         second.setUnitPrice(1500);
-        second.setQuantity(100);
+        second.setQuantity(50);
 
         list.add(second);
 

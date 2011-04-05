@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import org.soen487.supplychain.warehouse.*;
+//import org.soen487.supplychain.warehouse_2.*;
+//import org.soen487.supplychain.warehouse_3.*;
 
 /**
  *
@@ -96,10 +98,10 @@ public class submitOrder {
                 return shipGoods(itemList, custInfo);
             case 2: // Warehouse 2
                 System.out.println(" -->> calling warehouse 2");
-                return shipGoods(itemList, custInfo);
+                return shipGoods_2(itemList, custInfo);
             case 3: // Warehouse 3
                 System.out.println(" -->> calling warehouse 3");
-                return shipGoods(itemList, custInfo);
+                return shipGoods_3(itemList, custInfo);
             default:
                 System.out.println(" -->> no calls, something failed with random index!!");
                 return null;
@@ -107,24 +109,6 @@ public class submitOrder {
     }
 
     private void updateLists(List<ItemStatus> shipped_list, List<Item> order_list, List<ItemStatus> track_order_list) {
-        
-//        for(ItemStatus item_status : shipped_list.getItems()){
-//            for(Item order_item : order_list.getItems()){
-//                for(ItemStatus track_item : order_status.getItems()){
-//                    if (track_item.getItem().getProductName().equalsIgnoreCase(item_status.getItem().getProductName())
-//                            && order_item.getProductName().equalsIgnoreCase(item_status.getItem().getProductName())) {
-//
-//                        // update ordered item with what's left to order from previous call to warehouse.
-//                        order_item.setQuantity(item_status.getNotShipped());
-//                        track_item.setShipped(track_item.getShipped() + item_status.getShipped());
-//                        track_item.setNotShipped(track_item.getNotShipped());
-//
-//                    }
-//                }
-//
-//            }
-//       }
-
 
         for(int x = order_list.size()-1; x >= 0 ; x--){
             System.out.println("------- Item " + x + " --------");
@@ -169,5 +153,18 @@ public class submitOrder {
         org.soen487.supplychain.warehouse.Warehouse port = service.getWarehousePort();
         return port.shipGoods(itemList, info);
     }
+
+    private static ItemShippingStatusList shipGoods_2(org.soen487.supplychain.warehouse.ItemList itemList, org.soen487.supplychain.warehouse.Customer info) {
+        org.soen487.supplychain.warehouse.Warehouse2Service service = new org.soen487.supplychain.warehouse.Warehouse2Service();
+        org.soen487.supplychain.warehouse.Warehouse2 port = service.getWarehouse2Port();
+        return port.shipGoods(itemList, info);
+    }
+
+    private static ItemShippingStatusList shipGoods_3(org.soen487.supplychain.warehouse.ItemList itemList, org.soen487.supplychain.warehouse.Customer info) {
+        org.soen487.supplychain.warehouse.Warehouse3Service service = new org.soen487.supplychain.warehouse.Warehouse3Service();
+        org.soen487.supplychain.warehouse.Warehouse3 port = service.getWarehouse3Port();
+        return port.shipGoods(itemList, info);
+    }
+
 
 }
