@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : products.xml
+    Created on : February 7, 2011, 5:18 PM
+    Author     : st_youn
+    Description:
+        Purpose of the document follows.
+-->
+
+<products>
+
+    <product name="Brand1TV">
+        <manufacturerName>Brand1</manufacturerName>
+        <productType>TV</productType>
+        <unitPrice>1000</unitPrice>
+    </product>
+
+    <product name="Brand2TV">
+        <manufacturerName>Brand1</manufacturerName>
+        <productType>TV</productType>
+        <unitPrice>150</unitPrice>
+    </product>
+
+    <product name="Brand3TV">
+        <manufacturerName>Brand1</manufacturerName>
+        <productType>TV</productType>
+        <unitPrice>50</unitPrice>
+    </product>
+
+</products>
