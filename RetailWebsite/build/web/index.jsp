@@ -19,6 +19,7 @@
         <link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.3.4.css">
         <!-- JS Libraries -->
         <script type="text/javascript" src="js/jquery-1.5.1.js"></script>
+        <script type="text/javascript" src="js/jquery.xmltojson.js"></script>
         <script type="text/javascript" src="js/jquery.soap.js"></script>
         <script type="text/javascript" src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
         <!-- JS -->
