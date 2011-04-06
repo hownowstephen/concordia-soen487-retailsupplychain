@@ -17,7 +17,9 @@ import java.io.*;
 public class Product {
 
     // Location of the products xml file
-    private static final String PRODUCT_XML = "c:/Java/Soen487-retailsupply/liste.xml";
+//    private static final String PRODUCT_XML = "c:/Java/Soen487-retailsupply/liste.xml";
+    private static final String PRODUCT_XML = "C:/Users/Jose/Documents/soen487-retailsupplychain/ManufacturerService/src/java/org/soen487/supplychain/manufacturer/products.xml";
+
     // Member variables
     private String productName;
     private String manufacturerName;
@@ -29,6 +31,7 @@ public class Product {
 
     public Product(String productName) {
         try {
+            System.out.println("inside Product: productName = "+productName);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             InputSource is = new InputSource();
@@ -36,13 +39,15 @@ public class Product {
 
             Document doc = db.parse(is);
             
-            NodeList nodes = doc.getElementsByTagName("item");
+            NodeList nodes = doc.getElementsByTagName("product");
             System.out.println(nodes.getLength());
             // Loop through and print out all of the title elements
             for (int i = 0; i < nodes.getLength(); i++) {
                 Element element = (Element) nodes.item(i);
                 //System.out.println("inside loop"+getTextValue(element,"productType"));
-                if(getTextValue(element,"productType").equals(productName)){
+                System.out.println("inside loop: item name = "+element.getAttribute("name"));
+                //if(getTextValue(element,"productType").equals(productName)){
+                if(element.getAttribute("name").equals(productName)){
                     setManufacturerName(getTextValue(element,"manufacturerName"));
                     setProductType(getTextValue(element,"productType"));
                     setUnitPrice(getFloatValue(element,"unitPrice"));

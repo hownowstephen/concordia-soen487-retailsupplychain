@@ -26,7 +26,8 @@ import org.xml.sax.InputSource;
 @WebService()
 public class Manufacturer {
 
-    private static final String ORDERS_XML = "/root/NetBeansProjects/SupplyChainManagementClient/web/purchaseorders.xml";
+//    private static final String ORDERS_XML = "/root/NetBeansProjects/SupplyChainManagementClient/web/purchaseorders.xml";
+    private static final String ORDERS_XML = "C:/Users/Jose/Documents/soen487-retailsupplychain/ManufacturerService/src/java/org/soen487/supplychain/manufacturer/purchaseorders.xml";
 
     /**
      * Web service operation
@@ -36,7 +37,11 @@ public class Manufacturer {
     String aProductName) {
         try {
             Product product = new Product(aProductName);
-            return product;
+            if(product.getManufacturerName() == null || product.getProductName() == null || product.getProductType() == null || !(product.getUnitPrice() > 0.0)){
+                return null;
+            }else{
+                return product;
+            }
         } catch(Exception e){
             System.out.println("error: " + e.getMessage());
             return null;

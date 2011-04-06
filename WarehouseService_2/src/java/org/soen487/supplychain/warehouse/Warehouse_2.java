@@ -26,15 +26,16 @@ import org.xml.sax.InputSource;
  * @author root
  */
 @WebService()
-public class Warehouse {
+public class Warehouse_2 {
 
    //private static final String INVENTORY_XML = "/root/NetBeansProjects/SupplyChainManagementClient/web/inventory.xml";
     // NEED TO SET PROPER RELATIVE PATH TO inventory.xml
     //private static final String INVENTORY_XML = "../../../../../inventory.xml";
-    //private static final String INVENTORY_XML = "C:/Users/Jose/Documents/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
-    private static final String INVENTORY_XML = "C:/Java/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
+    private static final String INVENTORY_XML = "C:/Users/Jose/Documents/soen487-retailsupplychain/WarehouseService_2/src/java/org/soen487/supplychain/warehouse/inventory.xml";
+    //private static final String INVENTORY_XML = "C:/Java/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
     private static final int REPLENISH_MINIMUM = 50;
     private static final int REPLENISH_AMOUNT = 200;
+    private ArrayList<String> namesInCatalog;
 
     /**
      * Web service operation
@@ -73,7 +74,7 @@ public class Warehouse {
                     if(tmp.getProductName().equals(xmlItem.getAttribute("name"))){
                         System.out.println("Found the product");
                         int newQuantity = (int) getFloatValue(xmlItem,"quantity") - tmp.getQuantity();
-                        System.out.println("*** W1 - newQuantity = " + newQuantity +" getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " tmp.getQuantity() = " + tmp.getQuantity());
+                        System.out.println("*** W2 - newQuantity = " + newQuantity +" getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " tmp.getQuantity() = " + tmp.getQuantity());
                         if(newQuantity >= 0){
                             // Ship and remove the items from inventory
                             xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(newQuantity));
@@ -128,9 +129,9 @@ public class Warehouse {
             NodeList inventory = doc.getElementsByTagName("item");
             for(int i=0;i<inventory.getLength();i++){
                 Element xmlItem = (Element) inventory.item(i);
-                System.out.println("WAREHOUSE 1 -- getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " item = " + xmlItem.getAttribute("name"));
+                System.out.println("WAREHOUSE 2 -- getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " item = " + xmlItem.getAttribute("name"));
                 if(getFloatValue(xmlItem,"quantity") < REPLENISH_MINIMUM){
-                    System.out.println("WAREHOUSE 1 --- PERFOMED REPLENISH ----");
+                    System.out.println("WAREHOUSE 2 --- PERFOMED REPLENISH ----");
                     xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(REPLENISH_AMOUNT));
                 }
             }
@@ -163,11 +164,12 @@ public class Warehouse {
     }
 
     @WebMethod(operationName= "getNameForCatalog")
-    public productList getNameForCatalog(){
+    public List getNameForCatalog(){
          try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             InputSource is = new InputSource();
+            System.out.println(System.getProperty("user.dir"));
             is.setCharacterStream(new FileReader(INVENTORY_XML));
 
             Document doc = db.parse(is);
@@ -177,15 +179,17 @@ public class Warehouse {
             // Loop through and print out all of the title elements
             for (int i = 0; i < nodes.getLength(); i++) {
                 Element element = (Element) nodes.item(i);
-                current.add(getTextValue(element,"manufacturerName"));
-                current.add(getTextValue(element,"productType"));
-                current.add(Float.toString(getFloatValue(element,"unitPrice")));
+                //System.out.println("inside loop"+getTextValue(element,"productType"));
+                if(!getTextValue(element,"productType").equals("")){
+                    System.out.println("in here! "+getTextValue(element,"productType"));
+                    current.add(getTextValue(element,"productType"));
+                    System.out.println(current.getItems());
+                    break;
+                }
             }
-            return current;
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
-        }
-         return null;
+        }       return null;
     }
 
 
