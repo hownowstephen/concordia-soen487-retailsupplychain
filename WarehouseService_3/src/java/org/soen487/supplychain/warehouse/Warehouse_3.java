@@ -28,11 +28,7 @@ import org.xml.sax.InputSource;
 @WebService()
 public class Warehouse_3 {
 
-   //private static final String INVENTORY_XML = "/root/NetBeansProjects/SupplyChainManagementClient/web/inventory.xml";
-    // NEED TO SET PROPER RELATIVE PATH TO inventory.xml
-    //private static final String INVENTORY_XML = "../../../../../inventory.xml";
-    private static final String INVENTORY_XML = "C:/Users/Jose/Documents/soen487-retailsupplychain/WarehouseService_3/src/java/org/soen487/supplychain/warehouse/inventory.xml";
-    //private static final String INVENTORY_XML = "C:/Java/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
+    private static final String INVENTORY_XML = "/home/jose/test/test3/soen487-retailsupplychain/WarehouseService_3/src/java/org/soen487/supplychain/warehouse/inventory.xml";
     private static final int REPLENISH_MINIMUM = 50;
     private static final int REPLENISH_AMOUNT = 200;
     private ArrayList<String> namesInCatalog;

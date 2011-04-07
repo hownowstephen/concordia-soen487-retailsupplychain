@@ -8,7 +8,6 @@ package org.soen487.supplychain.retail;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
-import javax.xml.ws.WebServiceRef;
 import org.soen487.supplychain.warehouse.*;
 
 
@@ -18,8 +17,6 @@ import org.soen487.supplychain.warehouse.*;
  */
 @WebService()
 public class Retail {
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WarehouseService/WarehouseService.wsdl")
-
 
     /**
      * Web service operation

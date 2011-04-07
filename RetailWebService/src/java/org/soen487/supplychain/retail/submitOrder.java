@@ -7,11 +7,8 @@ package org.soen487.supplychain.retail;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import org.soen487.supplychain.warehouse.*;
-//import org.soen487.supplychain.warehouse_2.*;
-//import org.soen487.supplychain.warehouse_3.*;
 
 /**
  *
@@ -38,7 +35,7 @@ public class submitOrder {
 
     public ItemShippingStatusList execute() {
         warehouse_indexes = Arrays.asList(1, 2, 3);
-        Collections.shuffle(warehouse_indexes); // sets a random ordered list of warehouse to be called
+        //Collections.shuffle(warehouse_indexes); // sets a random ordered list of warehouse to be called
 
         //ship_info = warehouse_call(itemList, custInfo, 1); // TEST PURPOSES ONLY - remove eventually
 

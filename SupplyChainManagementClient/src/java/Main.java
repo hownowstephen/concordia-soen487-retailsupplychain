@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.List;
 import org.soen487.supplychain.manufacturer.*;
 import org.soen487.supplychain.warehouse.*;
 
@@ -17,8 +16,8 @@ public class Main {
     public static void main(String[] args) {
 
 //        test_warehouse();
-        test_manufacturer();
-//        test_retail();
+//        test_manufacturer();
+        test_retail();
     }
 
     private static void test_retail() {
@@ -138,20 +137,20 @@ public class Main {
     }
 
     private static Product getProductInfo(java.lang.String aProductName) {
-        org.soen487.supplychain.manufacturer.ManufacturerService service = new org.soen487.supplychain.manufacturer.ManufacturerService();
-        org.soen487.supplychain.manufacturer.Manufacturer port = service.getManufacturerPort();
+        org.soen487.supplychain.manufacturer.Manufacturer1Service service = new org.soen487.supplychain.manufacturer.Manufacturer1Service();
+        org.soen487.supplychain.manufacturer.Manufacturer1 port = service.getManufacturer1Port();
         return port.getProductInfo(aProductName);
     }
 
     private static boolean receivePayment(java.lang.String orderNum, float totalPrice) {
-        org.soen487.supplychain.manufacturer.ManufacturerService service = new org.soen487.supplychain.manufacturer.ManufacturerService();
-        org.soen487.supplychain.manufacturer.Manufacturer port = service.getManufacturerPort();
+        org.soen487.supplychain.manufacturer.Manufacturer1Service service = new org.soen487.supplychain.manufacturer.Manufacturer1Service();
+        org.soen487.supplychain.manufacturer.Manufacturer1 port = service.getManufacturer1Port();
         return port.receivePayment(orderNum, totalPrice);
     }
 
     private static boolean processPurchaseOrder(org.soen487.supplychain.manufacturer.PurchaseOrder aPO) {
-        org.soen487.supplychain.manufacturer.ManufacturerService service = new org.soen487.supplychain.manufacturer.ManufacturerService();
-        org.soen487.supplychain.manufacturer.Manufacturer port = service.getManufacturerPort();
+        org.soen487.supplychain.manufacturer.Manufacturer1Service service = new org.soen487.supplychain.manufacturer.Manufacturer1Service();
+        org.soen487.supplychain.manufacturer.Manufacturer1 port = service.getManufacturer1Port();
         return port.processPurchaseOrder(aPO);
     }
 

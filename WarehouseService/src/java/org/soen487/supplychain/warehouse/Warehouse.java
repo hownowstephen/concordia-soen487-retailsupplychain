@@ -18,6 +18,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import org.soen487.supplychain.manufacturer.*;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
 
@@ -29,10 +30,7 @@ import org.xml.sax.InputSource;
 public class Warehouse {
 
    //private static final String INVENTORY_XML = "/root/NetBeansProjects/SupplyChainManagementClient/web/inventory.xml";
-    // NEED TO SET PROPER RELATIVE PATH TO inventory.xml
-    //private static final String INVENTORY_XML = "../../../../../inventory.xml";
-    private static final String INVENTORY_XML = "C:/Users/Jose/Documents/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
-    //private static final String INVENTORY_XML = "C:/Java/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
+    private static final String INVENTORY_XML = "/home/jose/test/test3/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
     private static final int REPLENISH_MINIMUM = 50;
     private static final int REPLENISH_AMOUNT = 200;
     private ArrayList<String> namesInCatalog;
@@ -127,12 +125,43 @@ public class Warehouse {
             Document doc = db.parse(is);
 
             NodeList inventory = doc.getElementsByTagName("item");
-            for(int i=0;i<inventory.getLength();i++){
+            for (int i = 0; i < inventory.getLength(); i++) {
                 Element xmlItem = (Element) inventory.item(i);
-                System.out.println("WAREHOUSE 1 -- getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " item = " + xmlItem.getAttribute("name"));
-                if(getFloatValue(xmlItem,"quantity") < REPLENISH_MINIMUM){
-                    System.out.println("WAREHOUSE 1 --- PERFOMED REPLENISH ----");
-                    xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(REPLENISH_AMOUNT));
+                System.out.println("WAREHOUSE 1 -- getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem, "quantity") + " item = " + xmlItem.getAttribute("name"));
+                if (getFloatValue(xmlItem, "quantity") < REPLENISH_MINIMUM) {
+                    ManufacturerHandler manufacturer_handler = new ManufacturerHandler();
+                    System.out.println("WAREHOUSE -- Fetching Product Info");
+                    Product p = manufacturer_handler.getProductInfo(xmlItem.getAttribute("name"));
+                    if (p != null) {
+                        System.out.println("WAREHOUSE -- Product Found");
+                        System.out.println(p.getManufacturerName());
+                        System.out.println(p.getUnitPrice());
+                        // Generate a new dummy order
+                        PurchaseOrder order = new PurchaseOrder();
+                        order.setOrderNum("777777");
+                        order.setCustomerRef("JLS");
+                        order.setProduct(p);
+                        order.setQuantity(90);
+                        order.setUnitPrice(5000);
+                        // Attempt to process
+                        if (manufacturer_handler.processPurchaseOrder(order)) {
+                            System.out.println("WAREHOUSE -- Order processed successfully.");
+
+                            xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(REPLENISH_AMOUNT));
+                            System.out.println("WAREHOUSE 1 --- PERFOMED REPLENISH ----");
+                            System.out.println("WAREHOUSE 1 --- sending Payment to Warehouse ----");
+                            if (manufacturer_handler.receivePayment(order.getProduct(),order.getOrderNum(), order.getQuantity()*order.getUnitPrice())){
+                                System.out.println("WAREHOUSE 1 --- Payment has been received by Manufacturer ----");
+                            }else{
+                                System.out.println("WAREHOUSE 1 --- Payment has NOT been received by Manufacturer  ----");
+                            }
+                        }else{
+                            System.out.println("WAREHOUSE 1 --- Purchase Order NOT performed ----");
+                        }
+                    } else {
+                        System.out.println("no product found");
+                    }
+                    
                 }
             }
 

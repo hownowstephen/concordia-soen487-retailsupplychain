@@ -17,9 +17,7 @@ import java.io.*;
 public class Product {
 
     // Location of the products xml file
-//    private static final String PRODUCT_XML = "c:/Java/Soen487-retailsupply/liste.xml";
-    private static final String PRODUCT_XML = "C:/Users/Jose/Documents/soen487-retailsupplychain/ManufacturerService/src/java/org/soen487/supplychain/manufacturer/products.xml";
-
+    private static final String PRODUCT_XML = "/home/jose/test/test3/soen487-retailsupplychain/ManufacturerService/src/java/org/soen487/supplychain/manufacturer/products.xml";
     // Member variables
     private String productName;
     private String manufacturerName;
