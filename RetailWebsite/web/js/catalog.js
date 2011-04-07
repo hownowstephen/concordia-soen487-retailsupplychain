@@ -1,9 +1,21 @@
 
 // Initialize some values
 var cart = {};
-var catalog = {"1000":{"name":"Television","cost":500,"image":"http://t2.gstatic.com/images?q=tbn:ANd9GcQRiz6FXjhFkL3wUDAE_GAhxCV3kpusboDZj6ypnZejLMW_Ktrjiw"},
-               "1001":{"name":"Stereo","cost":10,"image":"http://visual.merriam-webster.com/images/communications/communications/mini-stereo-sound-system.jpg"},
-               "1002":{"name":"Cell Phone", "cost":500, "image":"http://handies.phandroid.com/media/htc-legend-1284383469-222.jpg"}
+var catalog = {"1000":{"name":"Television",
+                       "cost":500,
+                       "manufacturer": "Manufacturer",
+                       "type": "TV",
+                       "image":"http://t2.gstatic.com/images?q=tbn:ANd9GcQRiz6FXjhFkL3wUDAE_GAhxCV3kpusboDZj6ypnZejLMW_Ktrjiw"},
+               "1001":{"name":"Stereo",
+                        "cost":10,
+                        "manufacturer": "Manufacturer",
+                        "type": "Stereo",
+                        "image":"http://visual.merriam-webster.com/images/communications/communications/mini-stereo-sound-system.jpg"},
+               "1002":{"name":"Cell Phone",
+                       "cost":500,
+                       "manufacturer": "Manufacturer",
+                       "type": "Phone",
+                       "image":"http://handies.phandroid.com/media/htc-legend-1284383469-222.jpg"}
               };
 $(document).ready(function(){
 
@@ -16,9 +28,13 @@ $(document).ready(function(){
         $("#empty").hide();
         if(!cart[id]){
            cart[id] = 1;
-           sc.append('<tr class="cart-entry"><td>' + item.name + '</td><td><input type="text" name="count" value="1" /></td></tr>');
+           sc.append('<tr rel="'+ id +'" class="cart-entry"><td>' + item.name + '</td><td><input type="text" name="count" value="1" /></td></tr>');
         }
         refreshCart();
+    });
+    $(".cart-entry").live("change",function(){
+        cart[$(this).attr("rel")] = $("input[name=count]",this).val();
+        console.log(cart);
     });
 });
 

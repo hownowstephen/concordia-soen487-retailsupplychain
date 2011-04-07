@@ -19,6 +19,7 @@
         <link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.3.4.css">
         <!-- JS Libraries -->
         <script type="text/javascript" src="js/jquery-1.5.1.js"></script>
+        <script type="text/javascript" src="js/jquery.xmltojson.js"></script>
         <script type="text/javascript" src="js/jquery.soap.js"></script>
         <script type="text/javascript" src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
         <!-- JS -->
@@ -74,27 +75,34 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="phone">Phone</label>
+                                    <label for="name">Country</label>
                                 </td>
                                 <td>
-                                    <input type="text" name="phone">
+                                    <input type="text" name="country">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="address">Address</label>
+                                    <label for="name">State/Province</label>
                                 </td>
                                 <td>
-                                    <textarea name="address"></textarea>
+                                    <input type="text" name="state">
                                 </td>
                             </tr>
-
                             <tr>
                                 <td>
-                                    <label for="name">Credit Card #</label>
+                                    <label for="addr1">Address1</label>
                                 </td>
                                 <td>
-                                    <input type="text" name="creditcard">
+                                    <input type="text"  name="addr1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="addr2">Address2</label>
+                                </td>
+                                <td>
+                                    <input type="text"  name="addr2">
                                 </td>
                             </tr>
                             <tr>
