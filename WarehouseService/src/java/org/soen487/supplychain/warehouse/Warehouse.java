@@ -7,8 +7,6 @@ package org.soen487.supplychain.warehouse;
 
 import java.io.File;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -29,11 +27,9 @@ import org.xml.sax.InputSource;
 @WebService()
 public class Warehouse {
 
-   //private static final String INVENTORY_XML = "/root/NetBeansProjects/SupplyChainManagementClient/web/inventory.xml";
     private static final String INVENTORY_XML = "/home/jose/test/test3/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
     private static final int REPLENISH_MINIMUM = 50;
     private static final int REPLENISH_AMOUNT = 200;
-    private ArrayList<String> namesInCatalog;
 
     /**
      * Web service operation
@@ -55,8 +51,6 @@ public class Warehouse {
             NodeList inventory = doc.getElementsByTagName("item");
 
             ItemShippingStatusList statusList = new ItemShippingStatusList();
-            // Flag to call the replenish function at the end
-            boolean restock = false;
 
             System.out.println("Looping through items");
             // Loop through the items passed in the itemlist
@@ -83,7 +77,6 @@ public class Warehouse {
                             statusList.add(tmp, (int) getFloatValue(xmlItem,"quantity"), -newQuantity);
                             xmlItem.getElementsByTagName("quantity").item(0).setTextContent("0");
                             System.out.println("ELSE - item: " + tmp.getProductName() + " shipped: " + (int) getFloatValue(xmlItem,"quantity") + " not shipped: " + -newQuantity);
-//                            restock = true;
                         }
                         break;
                     }
@@ -97,7 +90,6 @@ public class Warehouse {
             StreamResult result = new StreamResult(INVENTORY_XML);
             transformer.transform(source, result);
 
-//            if(restock) replenish();
             replenish();
 
             System.out.println("statusList generated - sending num items: "  + statusList.getItems().size());
@@ -193,12 +185,11 @@ public class Warehouse {
     }
 
     @WebMethod(operationName= "getNameForCatalog")
-    public List getNameForCatalog(){
+    public productList getNameForCatalog(){
          try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             InputSource is = new InputSource();
-            System.out.println(System.getProperty("user.dir"));
             is.setCharacterStream(new FileReader(INVENTORY_XML));
 
             Document doc = db.parse(is);
@@ -208,17 +199,15 @@ public class Warehouse {
             // Loop through and print out all of the title elements
             for (int i = 0; i < nodes.getLength(); i++) {
                 Element element = (Element) nodes.item(i);
-                //System.out.println("inside loop"+getTextValue(element,"productType"));
-                if(!getTextValue(element,"productType").equals("")){
-                    System.out.println("in here! "+getTextValue(element,"productType"));
-                    current.add(getTextValue(element,"productType"));
-                    System.out.println(current.getItems());
-                    break;
-                }
+                current.add(getTextValue(element,"manufacturerName"));
+                current.add(getTextValue(element,"productType"));
+                current.add(Float.toString(getFloatValue(element,"unitPrice")));
             }
+            return current;
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
-        }       return null;
+        }
+         return null;
     }
 
 

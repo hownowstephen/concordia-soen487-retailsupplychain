@@ -64,7 +64,7 @@ var SOAPClient = (function() {
 					 contentType: SOAPClient.ContentType + "; charset=\"" + SOAPClient.CharSet + "\"",
 					 beforeSend: function(req) {
 						req.setRequestHeader("Method", "POST");
-						req.setRequestHeader("Content-Length", SOAPClient.ContentLength);
+						//req.setRequestHeader("Content-Length", SOAPClient.ContentLength);
 						req.setRequestHeader("SOAPServer", SOAPClient.SOAPServer);
 						req.setRequestHeader("SOAPAction", soapReq.Action);
 						if(!!httpHeaders) {
@@ -174,7 +174,12 @@ var SOAPObject = function(name) {
 	this.children=[];
 	this.value=null;
 	this.attr=function(name, value){this.attributes.push({"name":name, "value":value});return this;};
-	this.appendChild=function(obj){this.children.push(obj);return obj;};
+	this.child=function(name,value){ 
+            var obj = new SOAPObject(name);
+            obj.val(value);
+            this.children.push(obj);
+        }
+        this.appendChild=function(obj){this.children.push(obj);return obj;};
 	this.hasChildren=function(){return (this.children.length > 0)?true:false;};
 	this.val=function(v){if(!v){return this.value;}else{this.value=v;return this;}};
 	this.toString=function(){return SOAPClient.ToXML(this);};
