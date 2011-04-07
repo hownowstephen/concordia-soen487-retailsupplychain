@@ -7,8 +7,6 @@ package org.soen487.supplychain.warehouse;
 
 import java.io.File;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -27,12 +25,11 @@ import org.xml.sax.InputSource;
  * @author root
  */
 @WebService()
-public class Warehouse_2 {
+public class Warehouse_1 {
 
-    private static final String INVENTORY_XML = "/home/jose/test/test3/soen487-retailsupplychain/WarehouseService_2/src/java/org/soen487/supplychain/warehouse/inventory.xml";
+    private static final String INVENTORY_XML = "/home/jose/test/test3/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
     private static final int REPLENISH_MINIMUM = 50;
     private static final int REPLENISH_AMOUNT = 200;
-    private ArrayList<String> namesInCatalog;
 
     /**
      * Web service operation
@@ -54,8 +51,6 @@ public class Warehouse_2 {
             NodeList inventory = doc.getElementsByTagName("item");
 
             ItemShippingStatusList statusList = new ItemShippingStatusList();
-            // Flag to call the replenish function at the end
-            boolean restock = false;
 
             System.out.println("Looping through items");
             // Loop through the items passed in the itemlist
@@ -71,7 +66,7 @@ public class Warehouse_2 {
                     if(tmp.getProductName().equals(xmlItem.getAttribute("name"))){
                         System.out.println("Found the product");
                         int newQuantity = (int) getFloatValue(xmlItem,"quantity") - tmp.getQuantity();
-                        System.out.println("*** W2 - newQuantity = " + newQuantity +" getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " tmp.getQuantity() = " + tmp.getQuantity());
+                        System.out.println("*** W1 - newQuantity = " + newQuantity +" getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " tmp.getQuantity() = " + tmp.getQuantity());
                         if(newQuantity >= 0){
                             // Ship and remove the items from inventory
                             xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(newQuantity));
@@ -82,7 +77,6 @@ public class Warehouse_2 {
                             statusList.add(tmp, (int) getFloatValue(xmlItem,"quantity"), -newQuantity);
                             xmlItem.getElementsByTagName("quantity").item(0).setTextContent("0");
                             System.out.println("ELSE - item: " + tmp.getProductName() + " shipped: " + (int) getFloatValue(xmlItem,"quantity") + " not shipped: " + -newQuantity);
-//                            restock = true;
                         }
                         break;
                     }
@@ -96,7 +90,6 @@ public class Warehouse_2 {
             StreamResult result = new StreamResult(INVENTORY_XML);
             transformer.transform(source, result);
 
-//            if(restock) replenish();
             replenish();
 
             System.out.println("statusList generated - sending num items: "  + statusList.getItems().size());
@@ -124,15 +117,15 @@ public class Warehouse_2 {
             Document doc = db.parse(is);
 
             NodeList inventory = doc.getElementsByTagName("item");
-            for(int i=0;i<inventory.getLength();i++){
+            for (int i = 0; i < inventory.getLength(); i++) {
                 Element xmlItem = (Element) inventory.item(i);
-                System.out.println("WAREHOUSE 2 -- getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " item = " + xmlItem.getAttribute("name"));
-                if(getFloatValue(xmlItem,"quantity") < REPLENISH_MINIMUM){
+                System.out.println("WAREHOUSE 1 -- getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem, "quantity") + " item = " + xmlItem.getAttribute("name"));
+                if (getFloatValue(xmlItem, "quantity") < REPLENISH_MINIMUM) {
                     ManufacturerHandler manufacturer_handler = new ManufacturerHandler();
-                    System.out.println("WAREHOUSE 2 -- Fetching Product Info");
+                    System.out.println("WAREHOUSE -- Fetching Product Info");
                     Product p = manufacturer_handler.getProductInfo(xmlItem.getAttribute("name"));
                     if (p != null) {
-                        System.out.println("WAREHOUSE 2 -- Product Found");
+                        System.out.println("WAREHOUSE -- Product Found");
                         System.out.println(p.getManufacturerName());
                         System.out.println(p.getUnitPrice());
                         // Generate a new dummy order
@@ -144,23 +137,23 @@ public class Warehouse_2 {
                         order.setUnitPrice(5000);
                         // Attempt to process
                         if (manufacturer_handler.processPurchaseOrder(order)) {
-                            System.out.println("WAREHOUSE 2 -- Order processed successfully.");
+                            System.out.println("WAREHOUSE -- Order processed successfully.");
 
                             xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(REPLENISH_AMOUNT));
-                            System.out.println("WAREHOUSE 2 --- PERFOMED REPLENISH ----");
-                            System.out.println("WAREHOUSE 2 --- sending Payment to Warehouse ----");
-                            if (manufacturer_handler.receivePayment(order.getProduct(), order.getOrderNum(), order.getQuantity() * order.getUnitPrice())) {
-                                System.out.println("WAREHOUSE 2 --- Payment has been received by Manufacturer ----");
-                            } else {
-                                System.out.println("WAREHOUSE 2 --- Payment has NOT been received by Manufacturer  ----");
+                            System.out.println("WAREHOUSE 1 --- PERFOMED REPLENISH ----");
+                            System.out.println("WAREHOUSE 1 --- sending Payment to Warehouse ----");
+                            if (manufacturer_handler.receivePayment(order.getProduct(),order.getOrderNum(), order.getQuantity()*order.getUnitPrice())){
+                                System.out.println("WAREHOUSE 1 --- Payment has been received by Manufacturer ----");
+                            }else{
+                                System.out.println("WAREHOUSE 1 --- Payment has NOT been received by Manufacturer  ----");
                             }
-                        } else {
-                            System.out.println("WAREHOUSE 2 --- Purchase Order NOT performed ----");
+                        }else{
+                            System.out.println("WAREHOUSE 1 --- Purchase Order NOT performed ----");
                         }
                     } else {
                         System.out.println("no product found");
                     }
-
+                    
                 }
             }
 
@@ -192,12 +185,11 @@ public class Warehouse_2 {
     }
 
     @WebMethod(operationName= "getNameForCatalog")
-    public List getNameForCatalog(){
+    public productList getNameForCatalog(){
          try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             InputSource is = new InputSource();
-            System.out.println(System.getProperty("user.dir"));
             is.setCharacterStream(new FileReader(INVENTORY_XML));
 
             Document doc = db.parse(is);
@@ -207,17 +199,15 @@ public class Warehouse_2 {
             // Loop through and print out all of the title elements
             for (int i = 0; i < nodes.getLength(); i++) {
                 Element element = (Element) nodes.item(i);
-                //System.out.println("inside loop"+getTextValue(element,"productType"));
-                if(!getTextValue(element,"productType").equals("")){
-                    System.out.println("in here! "+getTextValue(element,"productType"));
-                    current.add(getTextValue(element,"productType"));
-                    System.out.println(current.getItems());
-                    break;
-                }
+                current.add(getTextValue(element,"manufacturerName"));
+                current.add(getTextValue(element,"productType"));
+                current.add(Float.toString(getFloatValue(element,"unitPrice")));
             }
+            return current;
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
-        }       return null;
+        }
+         return null;
     }
 
 

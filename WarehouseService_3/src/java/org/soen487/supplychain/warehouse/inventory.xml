@@ -10,15 +10,15 @@
         <manufacturerName>Brand1</manufacturerName>
         <productType>TV</productType>
         <unitPrice>1400</unitPrice>
-        <quantity>611</quantity>
+        <quantity>190</quantity>
     </item>
-    <item name="Brand2TV">
+    <item name="Brand2CAM">
         <manufacturerName>Brand2</manufacturerName>
         <productType>TV</productType>
         <unitPrice>250</unitPrice>
         <quantity>200</quantity>
     </item>
-    <item name="Brand3TV">
+    <item name="Brand3DVD">
         <manufacturerName>Brand3</manufacturerName>
         <productType>TV</productType>
         <unitPrice>2500</unitPrice>

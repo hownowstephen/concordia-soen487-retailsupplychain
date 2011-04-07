@@ -16,14 +16,14 @@
         <unitPrice>1000</unitPrice>
     </product>
 
-    <product name="Brand2TV">
-        <manufacturerName>Brand1</manufacturerName>
+    <product name="Brand2CAM">
+        <manufacturerName>Brand2</manufacturerName>
         <productType>TV</productType>
         <unitPrice>150</unitPrice>
     </product>
 
-    <product name="Brand3TV">
-        <manufacturerName>Brand1</manufacturerName>
+    <product name="Brand3DVD">
+        <manufacturerName>Brand3</manufacturerName>
         <productType>TV</productType>
         <unitPrice>50</unitPrice>
     </product>

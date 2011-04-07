@@ -45,8 +45,8 @@ public class Main {
 
         // Create a dummy item
         Item second = new Item();
-        second.setProductName("Brand2TV");
-        second.setManufacturerName("Brand2");
+        second.setProductName("Brand3DVD");
+        second.setManufacturerName("Brand3");
         second.setProductType("TV");
         second.setUnitPrice(1500);
         second.setQuantity(50);
@@ -155,8 +155,8 @@ public class Main {
     }
 
     private static ItemShippingStatusList shipGoods(org.soen487.supplychain.warehouse.ItemList itemList, org.soen487.supplychain.warehouse.Customer info) {
-        org.soen487.supplychain.warehouse.WarehouseService service = new org.soen487.supplychain.warehouse.WarehouseService();
-        org.soen487.supplychain.warehouse.Warehouse port = service.getWarehousePort();
+        org.soen487.supplychain.warehouse.Warehouse1Service service = new org.soen487.supplychain.warehouse.Warehouse1Service();
+        org.soen487.supplychain.warehouse.Warehouse1 port = service.getWarehouse1Port();
         return port.shipGoods(itemList, info);
     }
 

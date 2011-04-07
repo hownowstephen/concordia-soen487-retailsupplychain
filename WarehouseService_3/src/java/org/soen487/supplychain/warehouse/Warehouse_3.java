@@ -18,6 +18,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import org.soen487.supplychain.manufacturer.*;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
 
@@ -54,7 +55,7 @@ public class Warehouse_3 {
 
             ItemShippingStatusList statusList = new ItemShippingStatusList();
             // Flag to call the replenish function at the end
-            boolean restock = false;
+
 
             System.out.println("Looping through items");
             // Loop through the items passed in the itemlist
@@ -81,7 +82,7 @@ public class Warehouse_3 {
                             statusList.add(tmp, (int) getFloatValue(xmlItem,"quantity"), -newQuantity);
                             xmlItem.getElementsByTagName("quantity").item(0).setTextContent("0");
                             System.out.println("ELSE - item: " + tmp.getProductName() + " shipped: " + (int) getFloatValue(xmlItem,"quantity") + " not shipped: " + -newQuantity);
-//                            restock = true;
+
                         }
                         break;
                     }
@@ -91,11 +92,10 @@ public class Warehouse_3 {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            //StreamResult result = new StreamResult(System.out);
+
             StreamResult result = new StreamResult(INVENTORY_XML);
             transformer.transform(source, result);
 
-//            if(restock) replenish();
             replenish();
 
             System.out.println("statusList generated - sending num items: "  + statusList.getItems().size());
@@ -126,9 +126,40 @@ public class Warehouse_3 {
             for(int i=0;i<inventory.getLength();i++){
                 Element xmlItem = (Element) inventory.item(i);
                 System.out.println("WAREHOUSE 3 -- getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " item = " + xmlItem.getAttribute("name"));
-                if(getFloatValue(xmlItem,"quantity") < REPLENISH_MINIMUM){
-                    System.out.println("WAREHOUSE 3 --- PERFOMED REPLENISH ----");
-                    xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(REPLENISH_AMOUNT));
+                if (getFloatValue(xmlItem, "quantity") < REPLENISH_MINIMUM) {
+                    ManufacturerHandler manufacturer_handler = new ManufacturerHandler();
+                    System.out.println("WAREHOUSE 3 -- Fetching Product Info");
+                    Product p = manufacturer_handler.getProductInfo(xmlItem.getAttribute("name"));
+                    if (p != null) {
+                        System.out.println("WAREHOUSE 3 -- Product Found");
+                        System.out.println(p.getManufacturerName());
+                        System.out.println(p.getUnitPrice());
+                        // Generate a new dummy order
+                        PurchaseOrder order = new PurchaseOrder();
+                        order.setOrderNum("777777");
+                        order.setCustomerRef("JLS");
+                        order.setProduct(p);
+                        order.setQuantity(90);
+                        order.setUnitPrice(5000);
+                        // Attempt to process
+                        if (manufacturer_handler.processPurchaseOrder(order)) {
+                            System.out.println("WAREHOUSE 3 -- Order processed successfully.");
+
+                            xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(REPLENISH_AMOUNT));
+                            System.out.println("WAREHOUSE 3 --- PERFOMED REPLENISH ----");
+                            System.out.println("WAREHOUSE 3 --- sending Payment to Warehouse ----");
+                            if (manufacturer_handler.receivePayment(order.getProduct(), order.getOrderNum(), order.getQuantity() * order.getUnitPrice())) {
+                                System.out.println("WAREHOUSE 3 --- Payment has been received by Manufacturer ----");
+                            } else {
+                                System.out.println("WAREHOUSE 3 --- Payment has NOT been received by Manufacturer  ----");
+                            }
+                        } else {
+                            System.out.println("WAREHOUSE 3 --- Purchase Order NOT performed ----");
+                        }
+                    } else {
+                        System.out.println("no product found");
+                    }
+
                 }
             }
 
