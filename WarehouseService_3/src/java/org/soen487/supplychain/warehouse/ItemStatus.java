@@ -27,7 +27,6 @@ public class ItemStatus {
     }
 
     public ItemStatus(Item item, int shipped, int not_shipped) {
-        System.out.println("ItemStatus >> item: " + item + " shipped: " + shipped + " not shipped: " + not_shipped);
         this.item = item;
         this.shipped = shipped;
         this.not_shipped = not_shipped;

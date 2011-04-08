@@ -26,7 +26,6 @@ public class ItemShippingStatusList {
     }
 
     public void add(Item item, int shipped, int not_shipped){
-        System.out.println("ItemShippingStatusList >> item: " + item + " shipped: " + shipped + " not shipped: " + not_shipped);
         this.items.add(new ItemStatus(item,shipped,not_shipped));
     }
 

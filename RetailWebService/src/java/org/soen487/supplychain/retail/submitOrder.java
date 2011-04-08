@@ -43,27 +43,12 @@ public class submitOrder {
 
             ship_info = warehouse_call(itemList, custInfo, warehouse.intValue());
 
-            System.out.println(" ---->> Response from warehouse call: " + ship_info);
-
-            for (ItemStatus x : ship_info.getItems()) {
-                System.out.println("--- execute BEFORE CLONE (ORIGINAL)-->> shipped quantity: " + x.getShipped() + " ptoductName: " + x.getItem().getProductName());
-            }
-
             // Copy the first call as the first status list of the order from client
             if(order_status == null){
-                System.out.println(" 1) Cloning Shipping Status list ... ");
                 deepClone();
-                System.out.println(" 2) Finished Cloning Shipping Status list ");
             }
-            for(ItemStatus x : ship_info.getItems()){
-                System.out.println("--- execute AFTER CLONE (ORIGINAL) -->> shipped quantity: " + x.getShipped() + " ptoductName: " + x.getItem().getProductName());
-            }
-            for(ItemStatus x : order_status.getItems()){
-                System.out.println("--- execute AFTER CLONE (COPY) -->> shipped quantity: " + x.getShipped() + " ptoductName: " + x.getItem().getProductName());
-            }
-            System.out.println("-- called updateLists --");
+
             updateLists(ship_info.getItems(), itemList.getItems(), order_status.getItems());
-            System.out.println("-- finished updateLists --");
 
             // determine if order has been complete
             order_complete = true;
@@ -105,17 +90,10 @@ public class submitOrder {
     private void updateLists(List<ItemStatus> shipped_list, List<Item> order_list, List<ItemStatus> track_order_list) {
 
         for(int x = order_list.size()-1; x >= 0 ; x--){
-            System.out.println("------- Item " + x + " --------");
-            System.out.println("order_list: ProductName = " + order_list.get(x).getProductName() + " ProductType = " + order_list.get(x).getProductType() + " Quantity = " + order_list.get(x).getQuantity());
-            System.out.println("shipped_list: ProductName = "+ shipped_list.get(x).getItem().getProductName() + " ProductType = " + shipped_list.get(x).getItem().getProductType() + " shipped = " + shipped_list.get(x).getShipped() );
-            System.out.println("BEFORE track_order_list: ProductName = " + track_order_list.get(x).getItem().getProductName() + " ProductType = " + track_order_list.get(x).getItem().getProductType() + " shipped = " + track_order_list.get(x).getShipped() + " not shipped = " +  track_order_list.get(x).getNotShipped() );
-            System.out.println("-------------------------------");
             // update ordered item with what's left to order from previous call to warehouse.
             order_list.get(x).setQuantity(shipped_list.get(x).getNotShipped());
             track_order_list.get(x).setNotShipped(track_order_list.get(x).getNotShipped() - shipped_list.get(x).getShipped());
             track_order_list.get(x).setShipped(track_order_list.get(x).getShipped() + shipped_list.get(x).getShipped());
-            System.out.println(" AFTER track_order_list: ProductName = " + track_order_list.get(x).getItem().getProductName() + " ProductType = " + track_order_list.get(x).getItem().getProductType() + " shipped = " + track_order_list.get(x).getShipped() + " not shipped = " +  track_order_list.get(x).getNotShipped() );
-
         }
 
 
@@ -123,7 +101,6 @@ public class submitOrder {
     }
 
     private void deepClone(){
-        System.out.println(" 1) Cloning Shipping Status list ... ");
         ArrayList<ItemStatus> i = (ArrayList<ItemStatus>) ship_info.getItems();
 
         order_status = new ItemShippingStatusList();
@@ -137,9 +114,6 @@ public class submitOrder {
             order_status_list.add(temp);
             
         }
-
-        System.out.println(" Cloned List: " + order_status);
-
     }
 
     private static ItemShippingStatusList shipGoods(org.soen487.supplychain.warehouse.ItemList itemList, org.soen487.supplychain.warehouse.Customer info) {

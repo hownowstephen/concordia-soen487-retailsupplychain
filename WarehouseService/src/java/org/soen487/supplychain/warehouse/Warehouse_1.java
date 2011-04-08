@@ -64,19 +64,18 @@ public class Warehouse_1 {
                     System.out.println(xmlItem.getAttribute("name"));
                     // Check if the unique identifiers match
                     if(tmp.getProductName().equals(xmlItem.getAttribute("name"))){
-                        System.out.println("Found the product");
+
                         int newQuantity = (int) getFloatValue(xmlItem,"quantity") - tmp.getQuantity();
-                        System.out.println("*** W1 - newQuantity = " + newQuantity +" getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem,"quantity") + " tmp.getQuantity() = " + tmp.getQuantity());
+
                         if(newQuantity >= 0){
                             // Ship and remove the items from inventory
                             xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(newQuantity));
                             statusList.add(tmp, tmp.getQuantity(),0);
-                            System.out.println("IF - item: " + tmp.getProductName() + " shipped: " + tmp.getQuantity() + " not shipped: " + 0);
+
                         }else{
                             // send available stock only
                             statusList.add(tmp, (int) getFloatValue(xmlItem,"quantity"), -newQuantity);
                             xmlItem.getElementsByTagName("quantity").item(0).setTextContent("0");
-                            System.out.println("ELSE - item: " + tmp.getProductName() + " shipped: " + (int) getFloatValue(xmlItem,"quantity") + " not shipped: " + -newQuantity);
                         }
                         break;
                     }
@@ -86,17 +85,12 @@ public class Warehouse_1 {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            //StreamResult result = new StreamResult(System.out);
+
             StreamResult result = new StreamResult(INVENTORY_XML);
             transformer.transform(source, result);
 
             replenish();
 
-            System.out.println("statusList generated - sending num items: "  + statusList.getItems().size());
-            System.out.println("statusList type: " + statusList);
-            for(ItemStatus x : statusList.getItems()){
-                System.out.println(" --- shipGoods -->> shipped quantity: " + x.getShippedQuatity() + " ptoductName: " + x.getItem().getProductName());
-            }
             return statusList;
         } catch(Exception e){
             System.out.println("Error: " + e.getMessage());
@@ -119,15 +113,13 @@ public class Warehouse_1 {
             NodeList inventory = doc.getElementsByTagName("item");
             for (int i = 0; i < inventory.getLength(); i++) {
                 Element xmlItem = (Element) inventory.item(i);
-                System.out.println("WAREHOUSE 1 -- getFloatValue(xmlItem,'quantity') = " + getFloatValue(xmlItem, "quantity") + " item = " + xmlItem.getAttribute("name"));
+
                 if (getFloatValue(xmlItem, "quantity") < REPLENISH_MINIMUM) {
                     ManufacturerHandler manufacturer_handler = new ManufacturerHandler();
-                    System.out.println("WAREHOUSE -- Fetching Product Info");
+
                     Product p = manufacturer_handler.getProductInfo(xmlItem.getAttribute("name"));
                     if (p != null) {
-                        System.out.println("WAREHOUSE -- Product Found");
-                        System.out.println(p.getManufacturerName());
-                        System.out.println(p.getUnitPrice());
+
                         // Generate a new dummy order
                         PurchaseOrder order = new PurchaseOrder();
                         order.setOrderNum("777777");
@@ -137,11 +129,9 @@ public class Warehouse_1 {
                         order.setUnitPrice(5000);
                         // Attempt to process
                         if (manufacturer_handler.processPurchaseOrder(order)) {
-                            System.out.println("WAREHOUSE -- Order processed successfully.");
 
                             xmlItem.getElementsByTagName("quantity").item(0).setTextContent(Integer.toString(REPLENISH_AMOUNT));
-                            System.out.println("WAREHOUSE 1 --- PERFOMED REPLENISH ----");
-                            System.out.println("WAREHOUSE 1 --- sending Payment to Warehouse ----");
+
                             if (manufacturer_handler.receivePayment(order.getProduct(),order.getOrderNum(), order.getQuantity()*order.getUnitPrice())){
                                 System.out.println("WAREHOUSE 1 --- Payment has been received by Manufacturer ----");
                             }else{
@@ -161,7 +151,7 @@ public class Warehouse_1 {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            //StreamResult result = new StreamResult(System.out);
+
             StreamResult result = new StreamResult(INVENTORY_XML);
             transformer.transform(source, result);
 

@@ -21,14 +21,13 @@ import org.xml.sax.InputSource;
 
 /**
  *
- * @author st_youn
+ * @author st_youn, jose
  */
 @WebService()
 public class Manufacturer1 {
 
-//    private static final String ORDERS_XML = "/root/NetBeansProjects/SupplyChainManagementClient/web/purchaseorders.xml";
-//    private static final String ORDERS_XML = "C:/Users/Jose/Documents/soen487-retailsupplychain/ManufacturerService/src/java/org/soen487/supplychain/manufacturer/purchaseorders.xml";
-private static final String ORDERS_XML = "/home/jose/test/test3/soen487-retailsupplychain/ManufacturerService/src/java/org/soen487/supplychain/manufacturer/purchaseorders.xml";
+    private static final String ORDERS_XML = "/home/jose/test/test3/soen487-retailsupplychain/ManufacturerService/src/java/org/soen487/supplychain/manufacturer/purchaseorders.xml";
+
     /**
      * Web service operation
      */
@@ -67,7 +66,7 @@ private static final String ORDERS_XML = "/home/jose/test/test3/soen487-retailsu
     public boolean receivePayment(@WebParam(name = "orderNum")
     String orderNum, @WebParam(name = "totalPrice")
     float totalPrice) {
-        //TODO write your implementation code here:
+
         File file = new File(ORDERS_XML);
         try{
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -81,6 +80,7 @@ private static final String ORDERS_XML = "/home/jose/test/test3/soen487-retailsu
 
             boolean flag = false;
             NodeList orders = doc.getElementsByTagName("order");
+
             // Loops through each element and checks if it is paid
             for(int i=0;i<orders.getLength();i++){
                 Element order = (Element) orders.item(i);
@@ -100,10 +100,12 @@ private static final String ORDERS_XML = "/home/jose/test/test3/soen487-retailsu
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(newDoc);
+
             //StreamResult result = new StreamResult(System.out);
             StreamResult result = new StreamResult(ORDERS_XML);
             transformer.transform(source, result);
             return flag;
+
         } catch(Exception e){
             System.out.println("Error: " + e.getMessage());
         }
@@ -119,6 +121,7 @@ private static final String ORDERS_XML = "/home/jose/test/test3/soen487-retailsu
         if(aPO.getUnitPrice() >= aPO.getProduct().getUnitPrice()){
             if(produce(aPO.getProduct().getProductName(),aPO.getQuantity())){
                 System.out.println("Processing order");
+                
                 // Processing the purchase order, needs to be added to the xml file
                 File file = new File(ORDERS_XML);
                 try{

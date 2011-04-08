@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package org.soen487.supplychain.warehouse;
 
@@ -51,7 +47,6 @@ public class ManufacturerHandler {
     }
 
     private ManufacturerRef determineRef(String attribute){
-        System.out.println("ManufacturerRef -- attribute = " + attribute);
         matcher = TVpattern.matcher(attribute);
         if(matcher.find()){
             System.out.println("ManufacturerRef -- calling TVRef");
@@ -71,10 +66,4 @@ public class ManufacturerHandler {
         return null;
 
     }
-
-
-    
-
-
-
 }

@@ -51,7 +51,6 @@ public class ManufacturerHandler {
     }
 
     private ManufacturerRef determineRef(String attribute){
-        System.out.println("ManufacturerRef -- attribute = " + attribute);
         matcher = TVpattern.matcher(attribute);
         if(matcher.find()){
             System.out.println("ManufacturerRef -- calling TVRef");
