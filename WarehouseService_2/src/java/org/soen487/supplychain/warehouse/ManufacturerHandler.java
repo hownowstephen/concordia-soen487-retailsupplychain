@@ -59,12 +59,12 @@ public class ManufacturerHandler {
         matcher = Campattern.matcher(attribute);
         if(matcher.find()){
             System.out.println("ManufacturerRef -- calling CAMRef");
-            return new ManufacturerTVRef();
+            return new ManufacturerCameraRef();
         }
         matcher = DVDPpattern.matcher(attribute);
         if(matcher.find()){
             System.out.println("ManufacturerRef -- calling DVDRef");
-            return new ManufacturerTVRef();
+            return new ManufacturerDVDPlayerRef();
         }
         System.out.println("ManufacturerRef -- No match Found");
         return null;
