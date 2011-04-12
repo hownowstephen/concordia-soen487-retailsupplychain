@@ -42,6 +42,62 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ItemShippingStatusList }
+     * 
+     */
+    public ItemShippingStatusList createItemShippingStatusList() {
+        return new ItemShippingStatusList();
+    }
+
+    /**
+     * Create an instance of {@link GetNameForCatalog }
+     * 
+     */
+    public GetNameForCatalog createGetNameForCatalog() {
+        return new GetNameForCatalog();
+    }
+
+    /**
+     * Create an instance of {@link ShipGoodsResponse }
+     * 
+     */
+    public ShipGoodsResponse createShipGoodsResponse() {
+        return new ShipGoodsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ItemStatus }
+     * 
+     */
+    public ItemStatus createItemStatus() {
+        return new ItemStatus();
+    }
+
+    /**
+     * Create an instance of {@link GetNameForCatalogResponse }
+     * 
+     */
+    public GetNameForCatalogResponse createGetNameForCatalogResponse() {
+        return new GetNameForCatalogResponse();
+    }
+
+    /**
+     * Create an instance of {@link Customer }
+     * 
+     */
+    public Customer createCustomer() {
+        return new Customer();
+    }
+
+    /**
+     * Create an instance of {@link ItemList }
+     * 
+     */
+    public ItemList createItemList() {
+        return new ItemList();
+    }
+
+    /**
      * Create an instance of {@link ShipGoods }
      * 
      */
@@ -55,62 +111,6 @@ public class ObjectFactory {
      */
     public Item createItem() {
         return new Item();
-    }
-
-    /**
-     * Create an instance of {@link ItemStatus }
-     * 
-     */
-    public ItemStatus createItemStatus() {
-        return new ItemStatus();
-    }
-
-    /**
-     * Create an instance of {@link ItemList }
-     * 
-     */
-    public ItemList createItemList() {
-        return new ItemList();
-    }
-
-    /**
-     * Create an instance of {@link GetNameForCatalog }
-     * 
-     */
-    public GetNameForCatalog createGetNameForCatalog() {
-        return new GetNameForCatalog();
-    }
-
-    /**
-     * Create an instance of {@link GetNameForCatalogResponse }
-     * 
-     */
-    public GetNameForCatalogResponse createGetNameForCatalogResponse() {
-        return new GetNameForCatalogResponse();
-    }
-
-    /**
-     * Create an instance of {@link ItemShippingStatusList }
-     * 
-     */
-    public ItemShippingStatusList createItemShippingStatusList() {
-        return new ItemShippingStatusList();
-    }
-
-    /**
-     * Create an instance of {@link Customer }
-     * 
-     */
-    public Customer createCustomer() {
-        return new Customer();
-    }
-
-    /**
-     * Create an instance of {@link ShipGoodsResponse }
-     * 
-     */
-    public ShipGoodsResponse createShipGoodsResponse() {
-        return new ShipGoodsResponse();
     }
 
     /**

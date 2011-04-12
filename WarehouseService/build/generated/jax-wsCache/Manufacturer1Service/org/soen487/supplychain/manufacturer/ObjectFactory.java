@@ -41,6 +41,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ProductQuantity }
+     * 
+     */
+    public ProductQuantity createProductQuantity() {
+        return new ProductQuantity();
+    }
+
+    /**
+     * Create an instance of {@link ReceivePaymentResponse }
+     * 
+     */
+    public ReceivePaymentResponse createReceivePaymentResponse() {
+        return new ReceivePaymentResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetProductInfoResponse }
+     * 
+     */
+    public GetProductInfoResponse createGetProductInfoResponse() {
+        return new GetProductInfoResponse();
+    }
+
+    /**
      * Create an instance of {@link PurchaseOrder }
      * 
      */
@@ -49,19 +73,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReceivePayment }
+     * Create an instance of {@link GetProductQuantity }
      * 
      */
-    public ReceivePayment createReceivePayment() {
-        return new ReceivePayment();
+    public GetProductQuantity createGetProductQuantity() {
+        return new GetProductQuantity();
     }
 
     /**
-     * Create an instance of {@link Product }
+     * Create an instance of {@link GetProductInfo }
      * 
      */
-    public Product createProduct() {
-        return new Product();
+    public GetProductInfo createGetProductInfo() {
+        return new GetProductInfo();
     }
 
     /**
@@ -81,51 +105,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Product }
+     * 
+     */
+    public Product createProduct() {
+        return new Product();
+    }
+
+    /**
+     * Create an instance of {@link ReceivePayment }
+     * 
+     */
+    public ReceivePayment createReceivePayment() {
+        return new ReceivePayment();
+    }
+
+    /**
      * Create an instance of {@link GetProductQuantityResponse }
      * 
      */
     public GetProductQuantityResponse createGetProductQuantityResponse() {
         return new GetProductQuantityResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetProductInfo }
-     * 
-     */
-    public GetProductInfo createGetProductInfo() {
-        return new GetProductInfo();
-    }
-
-    /**
-     * Create an instance of {@link GetProductInfoResponse }
-     * 
-     */
-    public GetProductInfoResponse createGetProductInfoResponse() {
-        return new GetProductInfoResponse();
-    }
-
-    /**
-     * Create an instance of {@link ProductQuantity }
-     * 
-     */
-    public ProductQuantity createProductQuantity() {
-        return new ProductQuantity();
-    }
-
-    /**
-     * Create an instance of {@link GetProductQuantity }
-     * 
-     */
-    public GetProductQuantity createGetProductQuantity() {
-        return new GetProductQuantity();
-    }
-
-    /**
-     * Create an instance of {@link ReceivePaymentResponse }
-     * 
-     */
-    public ReceivePaymentResponse createReceivePaymentResponse() {
-        return new ReceivePaymentResponse();
     }
 
     /**

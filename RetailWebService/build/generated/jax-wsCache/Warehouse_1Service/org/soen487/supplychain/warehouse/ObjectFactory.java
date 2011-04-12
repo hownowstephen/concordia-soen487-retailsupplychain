@@ -43,43 +43,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ShipGoods }
-     * 
-     */
-    public ShipGoods createShipGoods() {
-        return new ShipGoods();
-    }
-
-    /**
-     * Create an instance of {@link Customer }
-     * 
-     */
-    public Customer createCustomer() {
-        return new Customer();
-    }
-
-    /**
      * Create an instance of {@link Item }
      * 
      */
     public Item createItem() {
         return new Item();
-    }
-
-    /**
-     * Create an instance of {@link GetInfoForCatalog }
-     * 
-     */
-    public GetInfoForCatalog createGetInfoForCatalog() {
-        return new GetInfoForCatalog();
-    }
-
-    /**
-     * Create an instance of {@link ItemStatus }
-     * 
-     */
-    public ItemStatus createItemStatus() {
-        return new ItemStatus();
     }
 
     /**
@@ -99,6 +67,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetInfoForCatalog }
+     * 
+     */
+    public GetInfoForCatalog createGetInfoForCatalog() {
+        return new GetInfoForCatalog();
+    }
+
+    /**
      * Create an instance of {@link GetInfoForCatalogResponse }
      * 
      */
@@ -107,11 +83,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ShipGoodsResponse }
+     * Create an instance of {@link Customer }
      * 
      */
-    public ShipGoodsResponse createShipGoodsResponse() {
-        return new ShipGoodsResponse();
+    public Customer createCustomer() {
+        return new Customer();
     }
 
     /**
@@ -128,6 +104,30 @@ public class ObjectFactory {
      */
     public Product createProduct() {
         return new Product();
+    }
+
+    /**
+     * Create an instance of {@link ShipGoods }
+     * 
+     */
+    public ShipGoods createShipGoods() {
+        return new ShipGoods();
+    }
+
+    /**
+     * Create an instance of {@link ItemStatus }
+     * 
+     */
+    public ItemStatus createItemStatus() {
+        return new ItemStatus();
+    }
+
+    /**
+     * Create an instance of {@link ShipGoodsResponse }
+     * 
+     */
+    public ShipGoodsResponse createShipGoodsResponse() {
+        return new ShipGoodsResponse();
     }
 
     /**

@@ -42,19 +42,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ShipGoodsResponse }
+     * Create an instance of {@link GetNameForCatalogResponse }
      * 
      */
-    public ShipGoodsResponse createShipGoodsResponse() {
-        return new ShipGoodsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ShipGoods }
-     * 
-     */
-    public ShipGoods createShipGoods() {
-        return new ShipGoods();
+    public GetNameForCatalogResponse createGetNameForCatalogResponse() {
+        return new GetNameForCatalogResponse();
     }
 
     /**
@@ -66,19 +58,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetNameForCatalogResponse }
+     * Create an instance of {@link GetNameForCatalog }
      * 
      */
-    public GetNameForCatalogResponse createGetNameForCatalogResponse() {
-        return new GetNameForCatalogResponse();
+    public GetNameForCatalog createGetNameForCatalog() {
+        return new GetNameForCatalog();
     }
 
     /**
-     * Create an instance of {@link Customer }
+     * Create an instance of {@link ShipGoods }
      * 
      */
-    public Customer createCustomer() {
-        return new Customer();
+    public ShipGoods createShipGoods() {
+        return new ShipGoods();
     }
 
     /**
@@ -90,11 +82,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetNameForCatalog }
+     * Create an instance of {@link ShipGoodsResponse }
      * 
      */
-    public GetNameForCatalog createGetNameForCatalog() {
-        return new GetNameForCatalog();
+    public ShipGoodsResponse createShipGoodsResponse() {
+        return new ShipGoodsResponse();
     }
 
     /**
@@ -103,6 +95,14 @@ public class ObjectFactory {
      */
     public ItemShippingStatusList createItemShippingStatusList() {
         return new ItemShippingStatusList();
+    }
+
+    /**
+     * Create an instance of {@link Customer }
+     * 
+     */
+    public Customer createCustomer() {
+        return new Customer();
     }
 
     /**

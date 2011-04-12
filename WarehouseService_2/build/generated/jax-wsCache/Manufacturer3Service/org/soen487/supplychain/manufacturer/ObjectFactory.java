@@ -49,11 +49,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Product }
+     * Create an instance of {@link GetProductInfo }
      * 
      */
-    public Product createProduct() {
-        return new Product();
+    public GetProductInfo createGetProductInfo() {
+        return new GetProductInfo();
     }
 
     /**
@@ -65,14 +65,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetProductQuantity }
-     * 
-     */
-    public GetProductQuantity createGetProductQuantity() {
-        return new GetProductQuantity();
-    }
-
-    /**
      * Create an instance of {@link ReceivePayment }
      * 
      */
@@ -81,27 +73,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetProductQuantityResponse }
+     * Create an instance of {@link ProductQuantity }
      * 
      */
-    public GetProductQuantityResponse createGetProductQuantityResponse() {
-        return new GetProductQuantityResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetProductInfo }
-     * 
-     */
-    public GetProductInfo createGetProductInfo() {
-        return new GetProductInfo();
-    }
-
-    /**
-     * Create an instance of {@link ReceivePaymentResponse }
-     * 
-     */
-    public ReceivePaymentResponse createReceivePaymentResponse() {
-        return new ReceivePaymentResponse();
+    public ProductQuantity createProductQuantity() {
+        return new ProductQuantity();
     }
 
     /**
@@ -113,6 +89,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetProductQuantity }
+     * 
+     */
+    public GetProductQuantity createGetProductQuantity() {
+        return new GetProductQuantity();
+    }
+
+    /**
+     * Create an instance of {@link GetProductQuantityResponse }
+     * 
+     */
+    public GetProductQuantityResponse createGetProductQuantityResponse() {
+        return new GetProductQuantityResponse();
+    }
+
+    /**
      * Create an instance of {@link GetProductInfoResponse }
      * 
      */
@@ -121,11 +113,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ProductQuantity }
+     * Create an instance of {@link Product }
      * 
      */
-    public ProductQuantity createProductQuantity() {
-        return new ProductQuantity();
+    public Product createProduct() {
+        return new Product();
+    }
+
+    /**
+     * Create an instance of {@link ReceivePaymentResponse }
+     * 
+     */
+    public ReceivePaymentResponse createReceivePaymentResponse() {
+        return new ReceivePaymentResponse();
     }
 
     /**

@@ -16,13 +16,13 @@
         <manufacturerName>Brand1</manufacturerName>
         <productType>CAM</productType>
         <unitPrice>100</unitPrice>
-        <quantity>70</quantity>
+        <quantity>69</quantity>
     </item>
     <item name="Brand1DVD">
         <manufacturerName>Brand1</manufacturerName>
         <productType>DVD</productType>
         <unitPrice>10000</unitPrice>
-        <quantity>61</quantity>
+        <quantity>60</quantity>
     </item>
     <item name="Brand2CAM">
         <manufacturerName>Brand2</manufacturerName>
@@ -34,13 +34,13 @@
         <manufacturerName>Brand2</manufacturerName>
         <productType>TV</productType>
         <unitPrice>250</unitPrice>
-        <quantity>150</quantity>
+        <quantity>149</quantity>
     </item>
     <item name="Brand3DVD">
         <manufacturerName>Brand3</manufacturerName>
         <productType>DVD</productType>
         <unitPrice>2500</unitPrice>
-        <quantity>149</quantity>
+        <quantity>148</quantity>
     </item>
 
 </inventory>

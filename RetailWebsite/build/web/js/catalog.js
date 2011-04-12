@@ -13,7 +13,7 @@ $(document).ready(function(){
         $("#empty").hide();
         if(!cart[id]){
            cart[id] = 1;
-           sc.append('<tr rel="'+ id +'" class="cart-entry"><td>' + item.name + '</td><td><input type="text" name="count" value="1" /></td></tr>');
+           sc.append('<tr rel="'+ id +'" class="cart-entry"><td>' + item.name + '</td><td><input type="text" name="count" value="1" style="width:50px;text-align:center;" /></td><td><button onclick="return removeCartItem(' + id + ');">Remove</button></td></tr>');
         }
         refreshCart();
     });
@@ -34,6 +34,12 @@ function checkEmptyCart(){
         $("#empty").show();
     }
     return count;
+}
+
+function removeCartItem(id){
+    delete cart["" + id];
+    $("tr[rel=" + id + "]").remove();
+    return false;
 }
 
 function parseCatalog(data){

@@ -22,7 +22,7 @@
         <manufacturerName>Brand1</manufacturerName>
         <productType>DVD</productType>
         <unitPrice>10000</unitPrice>
-        <quantity>61</quantity>
+        <quantity>60</quantity>
     </item>
     <item name="Brand2CAM">
         <manufacturerName>Brand2</manufacturerName>
