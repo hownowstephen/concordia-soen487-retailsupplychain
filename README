@@ -1,0 +1,27 @@
+Readme for SOEN487 Project
+==========================
+
+This project is an implementation of a retail supply chain as a series of SOAP-XML
+Java web services. It is built to run on the glassfish v3 prelude server as a 
+standalone web application, and features a web interface that allows the ordering
+of various physical products. The supply and manufacturing of these products is
+simulated by the manufacturer and warehouse services.
+
+Developers
+----------
+
+Stephen Young - 9736247
+Jose Salvidar - 5335906
+Fabrice Bloncourt - 5340810
+
+Requirements
+------------
+
+This project was developed and tested on linux using Netbeans 6.9.1
+The code is meant to be deployed on the Glassfish v3 Prelude server
+
+Setup
+-----
+
+To run the project, load all seven projects into netbeans and deploy them, then
+right click on the Retailwebsite and click 'run' to open the web interface 

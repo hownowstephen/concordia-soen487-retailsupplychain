@@ -8,6 +8,15 @@ function size(obj){
     return size;
 }
 
+    //chk if an object is an array or not.
+function isArray(obj) {
+//returns true is it is an array
+if (obj.constructor.toString().indexOf("Array") == -1)
+return false;
+else
+return true;
+}
+
 // Helper function generates a unique id
 function createUUID() {
     // http://www.ietf.org/rfc/rfc4122.txt
@@ -128,13 +137,22 @@ function recv(json){
         "<br />Thank you for choosing XYZ!</p>"
     out += "<table>" +
           "<tr><td>Product</td><td># Requested</td><td># Shipped</td><td># On Order</td></tr>";
-    for(var r in results){
-        var item = results[r].item;
-        var res = results[r];
-        out += "<tr><td>" + item.productName +
-               "</td><td>" + item.quantity +
-               "</td><td>" + res.shipped +
-               "</td><td>" + res.not_shipped + "</td></tr>"
+    if(isArray(results)){
+        for(var r in results){
+            var item = results[r].item;
+            var res = results[r];
+            out += "<tr><td>" + item.productName +
+                   "</td><td>" + item.quantity +
+                   "</td><td>" + res.shipped +
+                   "</td><td>" + res.not_shipped + "</td></tr>"
+        }
+    }else{
+        var item = results.item;
+        var res = results;
+         out += "<tr><td>" + item.productName +
+                   "</td><td>" + item.quantity +
+                   "</td><td>" + res.shipped +
+                   "</td><td>" + res.not_shipped + "</td></tr>"
     }
     var form = $("#orderForm");
     // Clear form
