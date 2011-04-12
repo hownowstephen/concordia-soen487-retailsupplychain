@@ -122,7 +122,7 @@ public class Manufacturer1 {
     }
 
     /**
-     * Web service operation
+     * Web service operation 
      */
     @WebMethod(operationName = "processPurchaseOrder")
     public boolean processPurchaseOrder(@WebParam(name = "aPO")

@@ -1,22 +1,7 @@
 
 // Initialize some values
 var cart = {};
-var catalog = {"1000":{"name":"Television",
-                       "cost":500,
-                       "manufacturer": "Manufacturer",
-                       "type": "TV",
-                       "image":"http://t2.gstatic.com/images?q=tbn:ANd9GcQRiz6FXjhFkL3wUDAE_GAhxCV3kpusboDZj6ypnZejLMW_Ktrjiw"},
-               "1001":{"name":"Stereo",
-                        "cost":10,
-                        "manufacturer": "Manufacturer",
-                        "type": "Stereo",
-                        "image":"http://visual.merriam-webster.com/images/communications/communications/mini-stereo-sound-system.jpg"},
-               "1002":{"name":"Cell Phone",
-                       "cost":500,
-                       "manufacturer": "Manufacturer",
-                       "type": "Phone",
-                       "image":"http://handies.phandroid.com/media/htc-legend-1284383469-222.jpg"}
-              };
+var catalog = {};
 $(document).ready(function(){
 
     loadCatalog();
@@ -63,7 +48,7 @@ function parseCatalog(data){
                               "type": type,
                               "manufacturer": man,
                               "cost": cost,
-                              "image": 'balls'};
+                              "image": 'img/' + type + '.jpg'};
         itemID ++;
     }
 
