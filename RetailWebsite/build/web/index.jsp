@@ -106,7 +106,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2"><input type="submit" value="Submit Order!" />
+                                <td colspan="2">
+                                    <img src="img/ajax-loader.gif" id="submit_in_progress" style="display:none;" />
+                                    <input id="submitbtn" type="submit" value="Submit Order!" />
                             </td></tr>
                         </tbody></table>
                     </form>
