@@ -115,7 +115,7 @@ public class Main {
     }
 
     private static void test_manufacturer() {
-        Product p = getProductInfo("Brand1TV");
+        org.soen487.supplychain.manufacturer.Product p = getProductInfo("Brand1TV");
         if (p != null) {
             System.out.println(p.getManufacturerName());
             System.out.println(p.getUnitPrice());
@@ -136,7 +136,7 @@ public class Main {
         }
     }
 
-    private static Product getProductInfo(java.lang.String aProductName) {
+    private static org.soen487.supplychain.manufacturer.Product getProductInfo(java.lang.String aProductName) {
         org.soen487.supplychain.manufacturer.Manufacturer1Service service = new org.soen487.supplychain.manufacturer.Manufacturer1Service();
         org.soen487.supplychain.manufacturer.Manufacturer1 port = service.getManufacturer1Port();
         return port.getProductInfo(aProductName);
@@ -155,8 +155,8 @@ public class Main {
     }
 
     private static ItemShippingStatusList shipGoods(org.soen487.supplychain.warehouse.ItemList itemList, org.soen487.supplychain.warehouse.Customer info) {
-        org.soen487.supplychain.warehouse.Warehouse1Service service = new org.soen487.supplychain.warehouse.Warehouse1Service();
-        org.soen487.supplychain.warehouse.Warehouse1 port = service.getWarehouse1Port();
+        org.soen487.supplychain.warehouse.WarehouseService service = new org.soen487.supplychain.warehouse.WarehouseService();
+        org.soen487.supplychain.warehouse.Warehouse port = service.getWarehousePort();
         return port.shipGoods(itemList, info);
     }
 

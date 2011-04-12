@@ -2,9 +2,9 @@
 
 <xs:element name="customer" type="tns:customer" />
 
-<xs:element name="getNameForCatalog" type="tns:getNameForCatalog" />
+<xs:element name="getInfoForCatalog" type="tns:getInfoForCatalog" />
 
-<xs:element name="getNameForCatalogResponse" type="tns:getNameForCatalogResponse" />
+<xs:element name="getInfoForCatalogResponse" type="tns:getInfoForCatalogResponse" />
 
 <xs:element name="item" type="tns:item" />
 
@@ -13,6 +13,8 @@
 <xs:element name="itemShippingStatusList" type="tns:itemShippingStatusList" />
 
 <xs:element name="itemStatus" type="tns:itemStatus" />
+
+<xs:element name="productList" type="tns:productList" />
 
 <xs:element name="shipGoods" type="tns:shipGoods" />
 
@@ -73,13 +75,28 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getNameForCatalog">
+<xs:complexType name="getInfoForCatalog">
 <xs:sequence />
 </xs:complexType>
 
-<xs:complexType name="getNameForCatalogResponse">
+<xs:complexType name="getInfoForCatalogResponse">
 <xs:sequence>
-<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded" />
+<xs:element name="return" type="tns:productList" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="productList">
+<xs:sequence>
+<xs:element name="product" type="tns:product" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="product">
+<xs:sequence>
+<xs:element name="manufacturerName" type="xs:string" minOccurs="0" />
+<xs:element name="productName" type="xs:string" minOccurs="0" />
+<xs:element name="productType" type="xs:string" minOccurs="0" />
+<xs:element name="unitPrice" type="xs:float" />
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

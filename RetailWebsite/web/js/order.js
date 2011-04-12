@@ -67,8 +67,11 @@ $(document).ready(function(){
 
         var request = new SOAPRequest("http://retail.supplychain.soen487.org/Retail/submitOrderRequest",ns2);
 
+        console.log(request.toString());
+
         SOAPClient.Proxy = "/RetailWebService/RetailService";
         SOAPClient.SendRequest(request,recv);
+
 
 
         evt.preventDefault();

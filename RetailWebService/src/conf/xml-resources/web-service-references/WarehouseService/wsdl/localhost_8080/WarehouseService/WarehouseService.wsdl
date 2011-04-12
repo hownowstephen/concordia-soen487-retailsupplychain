@@ -10,15 +10,34 @@
 <message name="shipGoodsResponse">
 <part name="parameters" element="tns:shipGoodsResponse" />
 </message>
+<message name="getInfoForCatalog">
+<part name="parameters" element="tns:getInfoForCatalog" />
+</message>
+<message name="getInfoForCatalogResponse">
+<part name="parameters" element="tns:getInfoForCatalogResponse" />
+</message>
 <portType name="Warehouse">
 <operation name="shipGoods">
 <input wsam:Action="http://warehouse.supplychain.soen487.org/Warehouse/shipGoodsRequest" message="tns:shipGoods" />
 <output wsam:Action="http://warehouse.supplychain.soen487.org/Warehouse/shipGoodsResponse" message="tns:shipGoodsResponse" />
 </operation>
+<operation name="getInfoForCatalog">
+<input wsam:Action="http://warehouse.supplychain.soen487.org/Warehouse/getInfoForCatalogRequest" message="tns:getInfoForCatalog" />
+<output wsam:Action="http://warehouse.supplychain.soen487.org/Warehouse/getInfoForCatalogResponse" message="tns:getInfoForCatalogResponse" />
+</operation>
 </portType>
 <binding name="WarehousePortBinding" type="tns:Warehouse">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
 <operation name="shipGoods">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="getInfoForCatalog">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" />

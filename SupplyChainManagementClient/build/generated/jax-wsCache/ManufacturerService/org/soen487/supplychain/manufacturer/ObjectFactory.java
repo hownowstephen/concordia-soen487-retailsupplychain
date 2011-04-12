@@ -41,19 +41,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Product }
+     * Create an instance of {@link ProductQuantity }
      * 
      */
-    public Product createProduct() {
-        return new Product();
+    public ProductQuantity createProductQuantity() {
+        return new ProductQuantity();
     }
 
     /**
-     * Create an instance of {@link GetProductInfo }
+     * Create an instance of {@link GetProductQuantityResponse }
      * 
      */
-    public GetProductInfo createGetProductInfo() {
-        return new GetProductInfo();
+    public GetProductQuantityResponse createGetProductQuantityResponse() {
+        return new GetProductQuantityResponse();
+    }
+
+    /**
+     * Create an instance of {@link PurchaseOrder }
+     * 
+     */
+    public PurchaseOrder createPurchaseOrder() {
+        return new PurchaseOrder();
     }
 
     /**
@@ -65,11 +73,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PurchaseOrder }
+     * Create an instance of {@link Product }
      * 
      */
-    public PurchaseOrder createPurchaseOrder() {
-        return new PurchaseOrder();
+    public Product createProduct() {
+        return new Product();
     }
 
     /**
@@ -89,11 +97,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetProductQuantityResponse }
+     * Create an instance of {@link GetProductInfo }
      * 
      */
-    public GetProductQuantityResponse createGetProductQuantityResponse() {
-        return new GetProductQuantityResponse();
+    public GetProductInfo createGetProductInfo() {
+        return new GetProductInfo();
+    }
+
+    /**
+     * Create an instance of {@link ProcessPurchaseOrder }
+     * 
+     */
+    public ProcessPurchaseOrder createProcessPurchaseOrder() {
+        return new ProcessPurchaseOrder();
     }
 
     /**
@@ -110,22 +126,6 @@ public class ObjectFactory {
      */
     public ReceivePayment createReceivePayment() {
         return new ReceivePayment();
-    }
-
-    /**
-     * Create an instance of {@link ProductQuantity }
-     * 
-     */
-    public ProductQuantity createProductQuantity() {
-        return new ProductQuantity();
-    }
-
-    /**
-     * Create an instance of {@link ProcessPurchaseOrder }
-     * 
-     */
-    public ProcessPurchaseOrder createProcessPurchaseOrder() {
-        return new ProcessPurchaseOrder();
     }
 
     /**

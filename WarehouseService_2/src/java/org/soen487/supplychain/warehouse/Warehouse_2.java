@@ -9,15 +9,19 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Resource;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.servlet.ServletContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.ws.WebServiceContext;
+import javax.xml.ws.handler.MessageContext;
 import org.soen487.supplychain.manufacturer.*;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
@@ -29,7 +33,9 @@ import org.xml.sax.InputSource;
 @WebService()
 public class Warehouse_2 {
 
-    private static final String INVENTORY_XML = "/home/jose/test/test3/soen487-retailsupplychain/WarehouseService_2/src/java/org/soen487/supplychain/warehouse/inventory.xml";
+    @Resource private WebServiceContext wsc;
+
+    private static String INVENTORY_XML = "inventory.xml";
     private static final int REPLENISH_MINIMUM = 50;
     private static final int REPLENISH_AMOUNT = 200;
     private ArrayList<String> namesInCatalog;
@@ -41,6 +47,12 @@ public class Warehouse_2 {
     public ItemShippingStatusList shipGoods(@WebParam(name = "itemList")
     org.soen487.supplychain.warehouse.ItemList itemList, @WebParam(name = "info")
     Customer info) {
+
+        MessageContext ctxt = wsc.getMessageContext();
+        ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT); 
+        String path = req.getRealPath("WEB-INF");
+        INVENTORY_XML = path + "/" + INVENTORY_XML;
+
         File file = new File(INVENTORY_XML);
         try{
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -97,6 +109,11 @@ public class Warehouse_2 {
     }
 
     private void replenish(){
+
+        MessageContext ctxt = wsc.getMessageContext();
+        ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
+        String path = req.getRealPath("WEB-INF");
+        INVENTORY_XML = path + "/" + INVENTORY_XML;
         // Performs the replenishing of items in the inventory, if needed
         File file = new File(INVENTORY_XML);
         try{
@@ -168,6 +185,11 @@ public class Warehouse_2 {
 
     @WebMethod(operationName= "getNameForCatalog")
     public List getNameForCatalog(){
+
+        MessageContext ctxt = wsc.getMessageContext();
+        ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
+        String path = req.getRealPath("WEB-INF");
+        INVENTORY_XML = path + "/" + INVENTORY_XML;
          try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();

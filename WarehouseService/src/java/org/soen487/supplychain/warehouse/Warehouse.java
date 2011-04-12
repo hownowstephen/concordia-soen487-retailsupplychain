@@ -6,16 +6,20 @@
 package org.soen487.supplychain.warehouse;
 
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileReader; 
+import javax.annotation.Resource;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.servlet.ServletContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.ws.WebServiceContext;
+import javax.xml.ws.handler.MessageContext;
 import org.soen487.supplychain.manufacturer.*;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
@@ -27,7 +31,10 @@ import org.xml.sax.InputSource;
 @WebService()
 public class Warehouse {
 
-    private static final String INVENTORY_XML = "/home/jose/test/test3/soen487-retailsupplychain/WarehouseService/src/java/org/soen487/supplychain/warehouse/inventory.xml";
+    @Resource private WebServiceContext wsc;
+    
+
+    private String INVENTORY_XML = "inventory.xml";
     private static final int REPLENISH_MINIMUM = 50;
     private static final int REPLENISH_AMOUNT = 200;
 
@@ -38,6 +45,12 @@ public class Warehouse {
     public ItemShippingStatusList shipGoods(@WebParam(name = "itemList")
     org.soen487.supplychain.warehouse.ItemList itemList, @WebParam(name = "info")
     Customer info) {
+
+        MessageContext ctxt = wsc.getMessageContext();
+        ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
+        String path = req.getRealPath("WEB-INF");
+        INVENTORY_XML = path + "/" + INVENTORY_XML;
+
         System.out.println(System.getProperty("user.dir")); // INDICATE THE WORKING DIR TO HLEP AT RELATIVE PATH SETTING
         File file = new File(INVENTORY_XML);
         try{
@@ -106,6 +119,12 @@ public class Warehouse {
     }
 
     private void replenish(){
+
+        MessageContext ctxt = wsc.getMessageContext();
+        ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
+        String path = req.getRealPath("WEB-INF");
+        INVENTORY_XML = path + "/" + INVENTORY_XML;
+
         // Performs the replenishing of items in the inventory, if needed
         File file = new File(INVENTORY_XML);
         try{
@@ -113,7 +132,7 @@ public class Warehouse {
             DocumentBuilder db = dbf.newDocumentBuilder();
             InputSource is = new InputSource();
             is.setCharacterStream(new FileReader(file));
-
+            
             Document doc = db.parse(is);
 
             NodeList inventory = doc.getElementsByTagName("item");
@@ -184,24 +203,29 @@ public class Warehouse {
             return Float.valueOf(getTextValue(ele,tagName)).floatValue();
     }
 
-    @WebMethod(operationName= "getNameForCatalog")
-    public productList getNameForCatalog(){
+   @WebMethod(operationName= "getInfoForCatalog")
+    public productList getInfoForCatalog(){
+
+       MessageContext ctxt = wsc.getMessageContext();
+        ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
+        String path = req.getRealPath("WEB-INF");
+        INVENTORY_XML = path + "/" + INVENTORY_XML;
+       
+        System.out.println("WAREHOUSE SERVICE GETCATALOG");
          try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             InputSource is = new InputSource();
-            is.setCharacterStream(new FileReader(INVENTORY_XML));
+            is.setCharacterStream(new FileReader( INVENTORY_XML));
 
             Document doc = db.parse(is);
             productList current = new productList();
             NodeList nodes = doc.getElementsByTagName("item");
-            System.out.println(nodes.getLength());
+            System.out.println("WAREHOUSE "+nodes.getLength());
             // Loop through and print out all of the title elements
             for (int i = 0; i < nodes.getLength(); i++) {
                 Element element = (Element) nodes.item(i);
-                current.add(getTextValue(element,"manufacturerName"));
-                current.add(getTextValue(element,"productType"));
-                current.add(Float.toString(getFloatValue(element,"unitPrice")));
+                current.setCatalog(getTextValue(element,"manufacturerName"),getTextValue(element,"productType"),getFloatValue(element,"unitPrice"));
             }
             return current;
         } catch (Exception e) {
@@ -209,6 +233,7 @@ public class Warehouse {
         }
          return null;
     }
+
 
 
 }

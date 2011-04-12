@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class productCatalog {
     // Location of the products xml file
-    private static final String PRODUCT_XML = "c:/Java/Soen487-retailsupply/inventory.xml";
+    private static final String PRODUCT_XML = "/home/stephen/school/soen487/soen487-retailsupplychain/inventory.xml";
     // Member variables
     private String productName;
     private String manufacturerName;

@@ -15,20 +15,32 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement
 public class productList {
 
-    private ArrayList<String> namesInCatalog;
+    private ArrayList<product> InfoForCatalog;
     private long version;
 
     public productList() {
-        this.namesInCatalog = new ArrayList<String>();
+        this.InfoForCatalog = new ArrayList<product>();
     }
 
-    public void add(String product){
-        this.namesInCatalog.add(product);
+    public int size(){
+        return this.InfoForCatalog.size();
     }
+
+    public product get(int index){
+        return this.InfoForCatalog.get(index);
+    }
+//
+//    public void add(product productInfo){
+//        this.InfoForCatalog.add(productInfo);
+//    }
 
     @XmlElement(name = "product")
-    public ArrayList<String> getItems() {
-        return namesInCatalog;
+    public ArrayList<product> getItems() {
+        return InfoForCatalog;
     }
 
+    public void setCatalog(String manName, String prodType, Float prodValue) {
+        product productInfo = new product(manName, prodType, prodValue);
+        this.InfoForCatalog.add(productInfo);
+    }
 }

@@ -25,7 +25,7 @@ public class product {
         this.productType = productType;
         this.unitPrice = unitPrice;
     }
-    
+
     public String getManufacturerName() {
         return manufacturerName;
     }

@@ -12,9 +12,27 @@
         <unitPrice>1400</unitPrice>
         <quantity>167</quantity>
     </item>
+    <item name="Brand1CAM">
+        <manufacturerName>Brand1</manufacturerName>
+        <productType>CAM</productType>
+        <unitPrice>100</unitPrice>
+        <quantity>70</quantity>
+    </item>
+    <item name="Brand1DVD">
+        <manufacturerName>Brand1</manufacturerName>
+        <productType>DVD</productType>
+        <unitPrice>10000</unitPrice>
+        <quantity>61</quantity>
+    </item>
     <item name="Brand2CAM">
         <manufacturerName>Brand2</manufacturerName>
         <productType>CAM</productType>
+        <unitPrice>250</unitPrice>
+        <quantity>150</quantity>
+    </item>
+    <item name="Brand2TV">
+        <manufacturerName>Brand2</manufacturerName>
+        <productType>TV</productType>
         <unitPrice>250</unitPrice>
         <quantity>150</quantity>
     </item>
@@ -22,7 +40,7 @@
         <manufacturerName>Brand3</manufacturerName>
         <productType>DVD</productType>
         <unitPrice>2500</unitPrice>
-        <quantity>148</quantity>
+        <quantity>149</quantity>
     </item>
 
 </inventory>

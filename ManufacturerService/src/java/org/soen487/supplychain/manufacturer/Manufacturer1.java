@@ -7,15 +7,19 @@ package org.soen487.supplychain.manufacturer;
 
 import java.io.File;
 import java.io.FileReader;
+import javax.annotation.Resource;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.servlet.ServletContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.ws.WebServiceContext;
+import javax.xml.ws.handler.MessageContext;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
 
@@ -26,8 +30,8 @@ import org.xml.sax.InputSource;
 @WebService()
 public class Manufacturer1 {
 
-    private static final String ORDERS_XML = "/home/jose/test/test3/soen487-retailsupplychain/ManufacturerService/src/java/org/soen487/supplychain/manufacturer/purchaseorders.xml";
-
+    @Resource private WebServiceContext wsc;
+    private static String ORDERS_XML = "purchaseorders.xml";
     /**
      * Web service operation
      */
@@ -66,6 +70,10 @@ public class Manufacturer1 {
     public boolean receivePayment(@WebParam(name = "orderNum")
     String orderNum, @WebParam(name = "totalPrice")
     float totalPrice) {
+        MessageContext ctxt = wsc.getMessageContext();
+        ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
+        String path = req.getRealPath("WEB-INF");
+        ORDERS_XML = path + "/" + ORDERS_XML;
 
         File file = new File(ORDERS_XML);
         try{
@@ -118,6 +126,12 @@ public class Manufacturer1 {
     @WebMethod(operationName = "processPurchaseOrder")
     public boolean processPurchaseOrder(@WebParam(name = "aPO")
     PurchaseOrder aPO) {
+
+        MessageContext ctxt = wsc.getMessageContext();
+        ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
+        String path = req.getRealPath("WEB-INF");
+        ORDERS_XML = path + "/" + ORDERS_XML;
+
         if(aPO.getUnitPrice() >= aPO.getProduct().getUnitPrice()){
             if(produce(aPO.getProduct().getProductName(),aPO.getQuantity())){
                 System.out.println("Processing order");

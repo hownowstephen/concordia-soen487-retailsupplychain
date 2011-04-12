@@ -24,12 +24,13 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GetNameForCatalog_QNAME = new QName("http://warehouse.supplychain.soen487.org/", "getNameForCatalog");
     private final static QName _ItemShippingStatusList_QNAME = new QName("http://warehouse.supplychain.soen487.org/", "itemShippingStatusList");
     private final static QName _ItemStatus_QNAME = new QName("http://warehouse.supplychain.soen487.org/", "itemStatus");
-    private final static QName _GetNameForCatalogResponse_QNAME = new QName("http://warehouse.supplychain.soen487.org/", "getNameForCatalogResponse");
     private final static QName _Customer_QNAME = new QName("http://warehouse.supplychain.soen487.org/", "customer");
     private final static QName _ShipGoods_QNAME = new QName("http://warehouse.supplychain.soen487.org/", "shipGoods");
+    private final static QName _GetInfoForCatalog_QNAME = new QName("http://warehouse.supplychain.soen487.org/", "getInfoForCatalog");
+    private final static QName _GetInfoForCatalogResponse_QNAME = new QName("http://warehouse.supplychain.soen487.org/", "getInfoForCatalogResponse");
+    private final static QName _ProductList_QNAME = new QName("http://warehouse.supplychain.soen487.org/", "productList");
     private final static QName _Item_QNAME = new QName("http://warehouse.supplychain.soen487.org/", "item");
     private final static QName _ItemList_QNAME = new QName("http://warehouse.supplychain.soen487.org/", "itemList");
     private final static QName _ShipGoodsResponse_QNAME = new QName("http://warehouse.supplychain.soen487.org/", "shipGoodsResponse");
@@ -42,27 +43,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Item }
+     * Create an instance of {@link Customer }
      * 
      */
-    public Item createItem() {
-        return new Item();
-    }
-
-    /**
-     * Create an instance of {@link GetNameForCatalog }
-     * 
-     */
-    public GetNameForCatalog createGetNameForCatalog() {
-        return new GetNameForCatalog();
-    }
-
-    /**
-     * Create an instance of {@link ItemShippingStatusList }
-     * 
-     */
-    public ItemShippingStatusList createItemShippingStatusList() {
-        return new ItemShippingStatusList();
+    public Customer createCustomer() {
+        return new Customer();
     }
 
     /**
@@ -74,19 +59,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ItemStatus }
-     * 
-     */
-    public ItemStatus createItemStatus() {
-        return new ItemStatus();
-    }
-
-    /**
      * Create an instance of {@link ItemList }
      * 
      */
     public ItemList createItemList() {
         return new ItemList();
+    }
+
+    /**
+     * Create an instance of {@link ProductList }
+     * 
+     */
+    public ProductList createProductList() {
+        return new ProductList();
+    }
+
+    /**
+     * Create an instance of {@link Item }
+     * 
+     */
+    public Item createItem() {
+        return new Item();
+    }
+
+    /**
+     * Create an instance of {@link Product }
+     * 
+     */
+    public Product createProduct() {
+        return new Product();
     }
 
     /**
@@ -98,28 +99,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Customer }
+     * Create an instance of {@link ItemStatus }
      * 
      */
-    public Customer createCustomer() {
-        return new Customer();
+    public ItemStatus createItemStatus() {
+        return new ItemStatus();
     }
 
     /**
-     * Create an instance of {@link GetNameForCatalogResponse }
+     * Create an instance of {@link GetInfoForCatalogResponse }
      * 
      */
-    public GetNameForCatalogResponse createGetNameForCatalogResponse() {
-        return new GetNameForCatalogResponse();
+    public GetInfoForCatalogResponse createGetInfoForCatalogResponse() {
+        return new GetInfoForCatalogResponse();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetNameForCatalog }{@code >}}
+     * Create an instance of {@link GetInfoForCatalog }
      * 
      */
-    @XmlElementDecl(namespace = "http://warehouse.supplychain.soen487.org/", name = "getNameForCatalog")
-    public JAXBElement<GetNameForCatalog> createGetNameForCatalog(GetNameForCatalog value) {
-        return new JAXBElement<GetNameForCatalog>(_GetNameForCatalog_QNAME, GetNameForCatalog.class, null, value);
+    public GetInfoForCatalog createGetInfoForCatalog() {
+        return new GetInfoForCatalog();
+    }
+
+    /**
+     * Create an instance of {@link ItemShippingStatusList }
+     * 
+     */
+    public ItemShippingStatusList createItemShippingStatusList() {
+        return new ItemShippingStatusList();
     }
 
     /**
@@ -141,15 +149,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetNameForCatalogResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://warehouse.supplychain.soen487.org/", name = "getNameForCatalogResponse")
-    public JAXBElement<GetNameForCatalogResponse> createGetNameForCatalogResponse(GetNameForCatalogResponse value) {
-        return new JAXBElement<GetNameForCatalogResponse>(_GetNameForCatalogResponse_QNAME, GetNameForCatalogResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Customer }{@code >}}
      * 
      */
@@ -165,6 +164,33 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://warehouse.supplychain.soen487.org/", name = "shipGoods")
     public JAXBElement<ShipGoods> createShipGoods(ShipGoods value) {
         return new JAXBElement<ShipGoods>(_ShipGoods_QNAME, ShipGoods.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetInfoForCatalog }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://warehouse.supplychain.soen487.org/", name = "getInfoForCatalog")
+    public JAXBElement<GetInfoForCatalog> createGetInfoForCatalog(GetInfoForCatalog value) {
+        return new JAXBElement<GetInfoForCatalog>(_GetInfoForCatalog_QNAME, GetInfoForCatalog.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetInfoForCatalogResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://warehouse.supplychain.soen487.org/", name = "getInfoForCatalogResponse")
+    public JAXBElement<GetInfoForCatalogResponse> createGetInfoForCatalogResponse(GetInfoForCatalogResponse value) {
+        return new JAXBElement<GetInfoForCatalogResponse>(_GetInfoForCatalogResponse_QNAME, GetInfoForCatalogResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProductList }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://warehouse.supplychain.soen487.org/", name = "productList")
+    public JAXBElement<ProductList> createProductList(ProductList value) {
+        return new JAXBElement<ProductList>(_ProductList_QNAME, ProductList.class, null, value);
     }
 
     /**

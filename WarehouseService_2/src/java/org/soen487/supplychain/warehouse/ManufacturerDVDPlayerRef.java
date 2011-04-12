@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package org.soen487.supplychain.warehouse;
+package org.soen487.supplychain.warehouse; 
 
 import org.soen487.supplychain.manufacturer.Product;
 import org.soen487.supplychain.manufacturer.ProductQuantity;

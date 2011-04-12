@@ -10,7 +10,7 @@
         <manufacturerName>Brand1</manufacturerName>
         <productType>TV</productType>
         <unitPrice>1400</unitPrice>
-        <quantity>190</quantity>
+        <quantity>0</quantity>
     </item>
     <item name="Brand2CAM">
         <manufacturerName>Brand2</manufacturerName>
@@ -22,7 +22,7 @@
         <manufacturerName>Brand3</manufacturerName>
         <productType>TV</productType>
         <unitPrice>2500</unitPrice>
-        <quantity>200</quantity>
+        <quantity>199</quantity>
     </item>
 
 </inventory>

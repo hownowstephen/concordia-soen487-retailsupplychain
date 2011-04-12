@@ -6,7 +6,7 @@
 package org.soen487.supplychain.retail;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Arrays; 
 import java.util.Collections;
 import java.util.List;
 import org.soen487.supplychain.warehouse.*;

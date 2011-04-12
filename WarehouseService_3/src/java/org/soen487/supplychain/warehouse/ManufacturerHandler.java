@@ -2,7 +2,7 @@
 package org.soen487.supplychain.warehouse;
 
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.regex.Pattern; 
 import org.soen487.supplychain.manufacturer.Product;
 import org.soen487.supplychain.manufacturer.PurchaseOrder;
 

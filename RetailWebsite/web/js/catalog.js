@@ -51,7 +51,22 @@ function checkEmptyCart(){
     return count;
 }
 
-function loadCatalog(){
+function parseCatalog(data){
+    var items = data.Body.getCatalogResponse['return'].product;
+    var itemID = 1000;
+    for(var i in items){
+        var x = items[i];
+        var man = x.manufacturerName;
+        var type = x.productType;
+        var cost = x.unitPrice;
+        catalog[''+itemID] = {"name": man + '' + type,
+                              "type": type,
+                              "manufacturer": man,
+                              "cost": cost,
+                              "image": 'balls'};
+        itemID ++;
+    }
+
     // @todo Logic for grabbing SOAP data from the WebService
     for(var i in catalog){
         var item = catalog[i];
@@ -62,6 +77,18 @@ function loadCatalog(){
                                  "</ul>" +
                              "</div>");
     }
+
+}
+
+function loadCatalog(){
+
+     var ns2 = new SOAPObject("ns2:getCatalog");
+        ns2.attr("xmlns:ns2","http://retail.supplychain.soen487.org/");
+
+        var request = new SOAPRequest("http://retail.supplychain.soen487.org/Retail/submitOrderRequest",ns2);
+        console.log(request.toString());
+        SOAPClient.Proxy = "/RetailWebService/RetailService";
+        SOAPClient.SendRequest(request,parseCatalog);
 }
 
 function refreshCart(){

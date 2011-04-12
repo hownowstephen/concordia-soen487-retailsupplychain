@@ -1,7 +1,6 @@
 
 package org.soen487.supplychain.warehouse;
 
-import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -46,13 +45,13 @@ public interface Warehouse {
     /**
      * 
      * @return
-     *     returns java.util.List<java.lang.Object>
+     *     returns org.soen487.supplychain.warehouse.ProductList
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getNameForCatalog", targetNamespace = "http://warehouse.supplychain.soen487.org/", className = "org.soen487.supplychain.warehouse.GetNameForCatalog")
-    @ResponseWrapper(localName = "getNameForCatalogResponse", targetNamespace = "http://warehouse.supplychain.soen487.org/", className = "org.soen487.supplychain.warehouse.GetNameForCatalogResponse")
-    @Action(input = "http://warehouse.supplychain.soen487.org/Warehouse/getNameForCatalogRequest", output = "http://warehouse.supplychain.soen487.org/Warehouse/getNameForCatalogResponse")
-    public List<Object> getNameForCatalog();
+    @RequestWrapper(localName = "getInfoForCatalog", targetNamespace = "http://warehouse.supplychain.soen487.org/", className = "org.soen487.supplychain.warehouse.GetInfoForCatalog")
+    @ResponseWrapper(localName = "getInfoForCatalogResponse", targetNamespace = "http://warehouse.supplychain.soen487.org/", className = "org.soen487.supplychain.warehouse.GetInfoForCatalogResponse")
+    @Action(input = "http://warehouse.supplychain.soen487.org/Warehouse/getInfoForCatalogRequest", output = "http://warehouse.supplychain.soen487.org/Warehouse/getInfoForCatalogResponse")
+    public ProductList getInfoForCatalog();
 
 }

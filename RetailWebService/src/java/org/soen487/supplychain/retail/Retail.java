@@ -8,6 +8,7 @@ package org.soen487.supplychain.retail;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.xml.ws.WebServiceRef;
 import org.soen487.supplychain.warehouse.*;
 
 
@@ -17,6 +18,8 @@ import org.soen487.supplychain.warehouse.*;
  */
 @WebService()
 public class Retail {
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WarehouseService/WarehouseService.wsdl")
+
 
     /**
      * Web service operation
@@ -35,12 +38,14 @@ public class Retail {
      */
     @WebMethod(operationName = "getCatalog")
 
-    public productCatalog getCatalog() {
+    public ProductList getCatalog() {
         try {
-            productCatalog productCatalog = new productCatalog();
-            System.out.println("in webmethod");
+            ProductList productCatalog = new ProductList();
+            provideCatalog tester = new provideCatalog();
+            productCatalog = tester.getItems();
+            System.out.println(tester.getItems());
             return productCatalog;
-            
+
         } catch(Exception e){
             System.out.println("error: " + e.getMessage());
             return null;

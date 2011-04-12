@@ -4,6 +4,15 @@
     <service name="Manufacturer">
       <implementation-class>org.soen487.supplychain.manufacturer.Manufacturer</implementation-class>
     </service>
+    <service name="Manufacturer3">
+      <implementation-class>org.soen487.supplychain.manufacturer.Manufacturer3</implementation-class>
+    </service>
+    <service name="Manufacturer2">
+      <implementation-class>org.soen487.supplychain.manufacturer.Manufacturer2</implementation-class>
+    </service>
+    <service name="Manufacturer1">
+      <implementation-class>org.soen487.supplychain.manufacturer.Manufacturer1</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>
