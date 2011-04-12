@@ -9,6 +9,10 @@ import javax.xml.parsers.*;
 import org.xml.sax.InputSource;
 import org.w3c.dom.*;
 import java.io.*;
+import javax.annotation.Resource;
+import javax.servlet.ServletContext;
+import javax.xml.ws.WebServiceContext;
+import javax.xml.ws.handler.MessageContext;
 
 /**
  *
@@ -16,8 +20,9 @@ import java.io.*;
  */
 public class Product {
 
+    @Resource private WebServiceContext wsc;
     // Location of the products xml file
-    private static final String PRODUCT_XML = "/home/jose/test/test3/soen487-retailsupplychain/ManufacturerService/src/java/org/soen487/supplychain/manufacturer/products.xml";
+    private static String PRODUCT_XML = "inventory.xml";
     // Member variables
     private String productName;
     private String manufacturerName;
@@ -28,6 +33,15 @@ public class Product {
     }
 
     public Product(String productName) {
+
+        MessageContext ctxt = wsc.getMessageContext();
+        ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
+        String path = req.getRealPath("WEB-INF");
+        if(!PRODUCT_XML.startsWith(path))
+            PRODUCT_XML = path + "/" + PRODUCT_XML;
+        System.out.println("PATH " + path);
+        System.out.println("PRODUCT_XML " + PRODUCT_XML); 
+
         try {
             System.out.println("inside Product: productName = "+productName);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

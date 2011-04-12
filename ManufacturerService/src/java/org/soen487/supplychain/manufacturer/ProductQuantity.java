@@ -9,14 +9,20 @@ import javax.xml.parsers.*;
 import org.xml.sax.InputSource;
 import org.w3c.dom.*;
 import java.io.*;
+import javax.annotation.Resource;
+import javax.servlet.ServletContext;
+import javax.xml.ws.WebServiceContext;
+import javax.xml.ws.handler.MessageContext;
 
 /**
  *
  * @author Fabrice
  */
 public class ProductQuantity {
+
+    @Resource private WebServiceContext wsc;
     // Location of the products xml file
-    private static final String PRODUCT_XML = "c:/Java/Soen487-retailsupply/inventory.xml";
+    private static String PRODUCT_XML = "inventory.xml";
     // Member variables
     private String productName;
     private String manufacturerName;
@@ -53,6 +59,13 @@ public class ProductQuantity {
     }
 
     public ProductQuantity(String productName) {
+
+         MessageContext ctxt = wsc.getMessageContext();
+        ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
+        String path = req.getRealPath("WEB-INF");
+        if(!PRODUCT_XML.startsWith(path))
+            PRODUCT_XML = path + "/" + PRODUCT_XML;
+
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
