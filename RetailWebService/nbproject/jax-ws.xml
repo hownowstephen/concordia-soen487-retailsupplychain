@@ -6,34 +6,6 @@
     </service>
   </services>
   <clients>
-    <client name="Warehouse_1Service">
-      <wsdl-url>http://localhost:8080/WarehouseService/Warehouse_1Service?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_8080/WarehouseService/Warehouse_1Service.wsdl</local-wsdl-file>
-      <package-name>org.soen487.supplychain.warehouse</package-name>
-      <catalog-file>catalog.xml</catalog-file>
-      <wsimport-options>
-        <wsimport-option>
-          <wsimport-option-name>extension</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>verbose</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:8080/WarehouseService/Warehouse_1Service?wsdl</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xnocompile</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xendorsed</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-      </wsimport-options>
-    </client>
     <client name="Warehouse_2Service">
       <wsdl-url>http://localhost:8080/WarehouseService_2/Warehouse_2Service?wsdl</wsdl-url>
       <local-wsdl-file>localhost_8080/WarehouseService_2/Warehouse_2Service.wsdl</local-wsdl-file>
@@ -90,9 +62,9 @@
         </wsimport-option>
       </wsimport-options>
     </client>
-    <client name="WarehouseService">
-      <wsdl-url>http://localhost:8080/WarehouseService/WarehouseService?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_8080/WarehouseService/WarehouseService.wsdl</local-wsdl-file>
+    <client name="Warehouse_1Service">
+      <wsdl-url>http://localhost:8080/WarehouseService/Warehouse_1Service?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_8080/WarehouseService/Warehouse_1Service.wsdl</local-wsdl-file>
       <package-name>org.soen487.supplychain.warehouse</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -106,7 +78,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:8080/WarehouseService/WarehouseService?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/WarehouseService/Warehouse_1Service?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>

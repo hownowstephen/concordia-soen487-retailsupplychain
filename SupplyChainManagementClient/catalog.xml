@@ -18,4 +18,7 @@
     <system systemId="http://localhost:8080/WarehouseService/Warehouse_1Service?xsd=1" uri="src/conf/xml-resources/web-service-references/Warehouse_1Service/wsdl/localhost_8080/WarehouseService/Warehouse_1Service.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/WarehouseService/WarehouseService?wsdl" uri="src/conf/xml-resources/web-service-references/WarehouseService/wsdl/localhost_8080/WarehouseService/WarehouseService.wsdl"/>
     <system systemId="http://localhost:8080/WarehouseService/WarehouseService?xsd=1" uri="src/conf/xml-resources/web-service-references/WarehouseService/wsdl/localhost_8080/WarehouseService/WarehouseService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/RetailWebService/RetailService?wsdl" uri="src/conf/xml-resources/web-service-references/RetailService/wsdl/localhost_8080/RetailWebService/RetailService.wsdl"/>
+    <system systemId="http://localhost:8080/RetailWebService/RetailService?xsd=1" uri="src/conf/xml-resources/web-service-references/RetailService/wsdl/localhost_8080/RetailWebService/RetailService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/RetailWebService/RetailService?xsd=2" uri="src/conf/xml-resources/web-service-references/RetailService/wsdl/localhost_8080/RetailWebService/RetailService.xsd_2.xsd"/>
 </catalog>

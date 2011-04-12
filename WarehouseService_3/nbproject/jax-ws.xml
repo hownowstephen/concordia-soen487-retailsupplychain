@@ -6,9 +6,9 @@
     </service>
   </services>
   <clients>
-    <client name="Manufacturer3Service">
-      <wsdl-url>http://localhost:8080/ManufacturerService/Manufacturer3Service?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_8080/ManufacturerService/Manufacturer3Service.wsdl</local-wsdl-file>
+    <client name="Manufacturer1Service">
+      <wsdl-url>http://localhost:8080/ManufacturerService/Manufacturer1Service?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_8080/ManufacturerService/Manufacturer1Service.wsdl</local-wsdl-file>
       <package-name>org.soen487.supplychain.manufacturer</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -22,7 +22,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:8080/ManufacturerService/Manufacturer3Service?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/ManufacturerService/Manufacturer1Service?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -62,9 +62,9 @@
         </wsimport-option>
       </wsimport-options>
     </client>
-    <client name="Manufacturer1Service">
-      <wsdl-url>http://localhost:8080/ManufacturerService/Manufacturer1Service?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_8080/ManufacturerService/Manufacturer1Service.wsdl</local-wsdl-file>
+    <client name="Manufacturer3Service">
+      <wsdl-url>http://localhost:8080/ManufacturerService/Manufacturer3Service?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_8080/ManufacturerService/Manufacturer3Service.wsdl</local-wsdl-file>
       <package-name>org.soen487.supplychain.manufacturer</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -78,7 +78,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:8080/ManufacturerService/Manufacturer1Service?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/ManufacturerService/Manufacturer3Service?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>

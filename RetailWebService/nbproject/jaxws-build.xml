@@ -38,22 +38,6 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-Warehouse_1Service" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/Warehouse_1Service"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Warehouse_1Service" destdir="${build.generated.dir}/jax-wsCache/Warehouse_1Service" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Warehouse_1Service/wsdl/localhost_8080/WarehouseService/Warehouse_1Service.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/WarehouseService/Warehouse_1Service?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Warehouse_1Service/wsdl/localhost_8080/WarehouseService/Warehouse_1Service.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/Warehouse_1Service"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/Warehouse_1Service">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-Warehouse_1Service" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/org/soen487/supplychain/warehouse"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/Warehouse_1Service"/>
-    </target>
     <target name="wsimport-client-Warehouse_2Service" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/Warehouse_2Service"/>
         <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Warehouse_2Service" destdir="${build.generated.dir}/jax-wsCache/Warehouse_2Service" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Warehouse_2Service/wsdl/localhost_8080/WarehouseService_2/Warehouse_2Service.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/WarehouseService_2/Warehouse_2Service?wsdl" xnocompile="true" xendorsed="true">
@@ -86,21 +70,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/org/soen487/supplychain/warehouse"/>
         <delete dir="${build.generated.dir}/jax-wsCache/Warehouse_3Service"/>
     </target>
-    <target name="wsimport-client-WarehouseService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/WarehouseService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WarehouseService" destdir="${build.generated.dir}/jax-wsCache/WarehouseService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WarehouseService/wsdl/localhost_8080/WarehouseService/WarehouseService.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/WarehouseService/WarehouseService?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WarehouseService/wsdl/localhost_8080/WarehouseService/WarehouseService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/WarehouseService"/>
+    <target name="wsimport-client-Warehouse_1Service" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Warehouse_1Service"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Warehouse_1Service" destdir="${build.generated.dir}/jax-wsCache/Warehouse_1Service" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Warehouse_1Service/wsdl/localhost_8080/WarehouseService/Warehouse_1Service.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/WarehouseService/Warehouse_1Service?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Warehouse_1Service/wsdl/localhost_8080/WarehouseService/Warehouse_1Service.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Warehouse_1Service"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/WarehouseService">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Warehouse_1Service">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-WarehouseService" depends="-init-project">
+    <target name="wsimport-client-clean-Warehouse_1Service" depends="-init-project">
         <delete dir="${build.generated.sources.dir}/jax-ws/org/soen487/supplychain/warehouse"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/WarehouseService"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Warehouse_1Service"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-Warehouse_1Service, wsimport-client-Warehouse_2Service, wsimport-client-Warehouse_3Service, wsimport-client-WarehouseService"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-Warehouse_2Service, wsimport-client-Warehouse_3Service, wsimport-client-Warehouse_1Service"/>
 </project>

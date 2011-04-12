@@ -131,7 +131,7 @@ public class Manufacturer1 {
         MessageContext ctxt = wsc.getMessageContext();
         ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
         String path = req.getRealPath("WEB-INF");
-        f(!ORDERS_XML.startsWith(path))
+        if(!ORDERS_XML.startsWith(path))
             ORDERS_XML = path + "/" + ORDERS_XML;
 
         if(aPO.getUnitPrice() >= aPO.getProduct().getUnitPrice()){

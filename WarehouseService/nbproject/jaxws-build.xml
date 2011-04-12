@@ -24,11 +24,6 @@
             <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
         </wsgen>
     </target>
-    <target name="wsgen-Warehouse" depends="wsgen-init">
-        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" xendorsed="true" keep="true" genwsdl="true" sei="org.soen487.supplychain.warehouse.Warehouse">
-            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
-        </wsgen>
-    </target>
     <!--
                 ===================
                 JAX-WS WSIMPORT SECTION
@@ -42,38 +37,6 @@
         <condition property="conf-dir" value="${conf.dir}/" else="">
             <isset property="conf.dir"/>
         </condition>
-    </target>
-    <target name="wsimport-client-Manufacturer3Service" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/Manufacturer3Service"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Manufacturer3Service" destdir="${build.generated.dir}/jax-wsCache/Manufacturer3Service" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer3Service/wsdl/localhost_8080/ManufacturerService/Manufacturer3Service.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/ManufacturerService/Manufacturer3Service?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer3Service/wsdl/localhost_8080/ManufacturerService/Manufacturer3Service.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/Manufacturer3Service"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/Manufacturer3Service">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-Manufacturer3Service" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/org/soen487/supplychain/manufacturer"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/Manufacturer3Service"/>
-    </target>
-    <target name="wsimport-client-Manufacturer2Service" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/Manufacturer2Service"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Manufacturer2Service" destdir="${build.generated.dir}/jax-wsCache/Manufacturer2Service" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer2Service/wsdl/localhost_8080/ManufacturerService/Manufacturer2Service.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/ManufacturerService/Manufacturer2Service?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer2Service/wsdl/localhost_8080/ManufacturerService/Manufacturer2Service.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/Manufacturer2Service"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/Manufacturer2Service">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-Manufacturer2Service" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/org/soen487/supplychain/manufacturer"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/Manufacturer2Service"/>
     </target>
     <target name="wsimport-client-Manufacturer1Service" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/Manufacturer1Service"/>
@@ -91,5 +54,37 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/org/soen487/supplychain/manufacturer"/>
         <delete dir="${build.generated.dir}/jax-wsCache/Manufacturer1Service"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-Manufacturer3Service, wsimport-client-Manufacturer2Service, wsimport-client-Manufacturer1Service"/>
+    <target name="wsimport-client-Manufacturer2Service" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Manufacturer2Service"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Manufacturer2Service" destdir="${build.generated.dir}/jax-wsCache/Manufacturer2Service" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer2Service/wsdl/localhost_8080/ManufacturerService/Manufacturer2Service.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/ManufacturerService/Manufacturer2Service?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer2Service/wsdl/localhost_8080/ManufacturerService/Manufacturer2Service.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Manufacturer2Service"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Manufacturer2Service">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Manufacturer2Service" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/soen487/supplychain/manufacturer"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Manufacturer2Service"/>
+    </target>
+    <target name="wsimport-client-Manufacturer3Service" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Manufacturer3Service"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Manufacturer3Service" destdir="${build.generated.dir}/jax-wsCache/Manufacturer3Service" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer3Service/wsdl/localhost_8080/ManufacturerService/Manufacturer3Service.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/ManufacturerService/Manufacturer3Service?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Manufacturer3Service/wsdl/localhost_8080/ManufacturerService/Manufacturer3Service.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Manufacturer3Service"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Manufacturer3Service">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Manufacturer3Service" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/soen487/supplychain/manufacturer"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Manufacturer3Service"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-Manufacturer1Service, wsimport-client-Manufacturer2Service, wsimport-client-Manufacturer3Service"/>
 </project>

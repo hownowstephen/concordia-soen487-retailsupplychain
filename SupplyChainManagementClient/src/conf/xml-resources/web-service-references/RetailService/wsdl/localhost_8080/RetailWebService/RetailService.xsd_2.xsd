@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.1-hudson-28-. --><xs:schema xmlns:tns="http://retail.supplychain.soen487.org/" xmlns:ns1="http://warehouse.supplychain.soen487.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://retail.supplychain.soen487.org/">
+
+<xs:import namespace="http://warehouse.supplychain.soen487.org/" schemaLocation="http://localhost:8080/RetailWebService/RetailService?xsd=1" />
+
+<xs:element name="getCatalog" type="tns:getCatalog" />
+
+<xs:element name="getCatalogResponse" type="tns:getCatalogResponse" />
+
+<xs:element name="submitOrder" type="tns:submitOrder" />
+
+<xs:element name="submitOrderResponse" type="tns:submitOrderResponse" />
+
+<xs:complexType name="submitOrder">
+<xs:sequence>
+<xs:element name="itemList" type="ns1:itemList" minOccurs="0" />
+<xs:element name="custInfo" type="ns1:customer" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="submitOrderResponse">
+<xs:sequence>
+<xs:element name="return" type="ns1:itemShippingStatusList" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCatalog">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="getCatalogResponse">
+<xs:sequence>
+<xs:element name="return" type="ns1:productList" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

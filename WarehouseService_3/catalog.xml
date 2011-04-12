@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/ManufacturerService/Manufacturer1Service?wsdl" uri="src/conf/xml-resources/web-service-references/Manufacturer1Service/wsdl/localhost_8080/ManufacturerService/Manufacturer1Service.wsdl"/>
+    <system systemId="http://localhost:8080/ManufacturerService/Manufacturer1Service?xsd=1" uri="src/conf/xml-resources/web-service-references/Manufacturer1Service/wsdl/localhost_8080/ManufacturerService/Manufacturer1Service.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ManufacturerService/Manufacturer2Service?wsdl" uri="src/conf/xml-resources/web-service-references/Manufacturer2Service/wsdl/localhost_8080/ManufacturerService/Manufacturer2Service.wsdl"/>
+    <system systemId="http://localhost:8080/ManufacturerService/Manufacturer2Service?xsd=1" uri="src/conf/xml-resources/web-service-references/Manufacturer2Service/wsdl/localhost_8080/ManufacturerService/Manufacturer2Service.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ManufacturerService/Manufacturer3Service?wsdl" uri="src/conf/xml-resources/web-service-references/Manufacturer3Service/wsdl/localhost_8080/ManufacturerService/Manufacturer3Service.wsdl"/>
+    <system systemId="http://localhost:8080/ManufacturerService/Manufacturer3Service?xsd=1" uri="src/conf/xml-resources/web-service-references/Manufacturer3Service/wsdl/localhost_8080/ManufacturerService/Manufacturer3Service.xsd_1.xsd"/>
+</catalog>

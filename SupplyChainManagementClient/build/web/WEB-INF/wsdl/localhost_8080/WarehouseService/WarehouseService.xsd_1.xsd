@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.1-hudson-28-. --><xs:schema xmlns:tns="http://warehouse.supplychain.soen487.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://warehouse.supplychain.soen487.org/">
+
+<xs:element name="customer" type="tns:customer" />
+
+<xs:element name="getInfoForCatalog" type="tns:getInfoForCatalog" />
+
+<xs:element name="getInfoForCatalogResponse" type="tns:getInfoForCatalogResponse" />
+
+<xs:element name="item" type="tns:item" />
+
+<xs:element name="itemList" type="tns:itemList" />
+
+<xs:element name="itemShippingStatusList" type="tns:itemShippingStatusList" />
+
+<xs:element name="itemStatus" type="tns:itemStatus" />
+
+<xs:element name="productList" type="tns:productList" />
+
+<xs:element name="shipGoods" type="tns:shipGoods" />
+
+<xs:element name="shipGoodsResponse" type="tns:shipGoodsResponse" />
+
+<xs:complexType name="shipGoods">
+<xs:sequence>
+<xs:element name="itemList" type="tns:itemList" minOccurs="0" />
+<xs:element name="info" type="tns:customer" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="itemList">
+<xs:sequence>
+<xs:element name="items" type="tns:item" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="item">
+<xs:sequence>
+<xs:element name="manufacturerName" type="xs:string" minOccurs="0" />
+<xs:element name="productName" type="xs:string" minOccurs="0" />
+<xs:element name="productType" type="xs:string" minOccurs="0" />
+<xs:element name="quantity" type="xs:int" />
+<xs:element name="unitPrice" type="xs:float" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="customer">
+<xs:sequence>
+<xs:element name="city" type="xs:string" minOccurs="0" />
+<xs:element name="country" type="xs:string" minOccurs="0" />
+<xs:element name="customerReferenceNumber" type="xs:int" />
+<xs:element name="name" type="xs:string" minOccurs="0" />
+<xs:element name="state" type="xs:string" minOccurs="0" />
+<xs:element name="street1" type="xs:string" minOccurs="0" />
+<xs:element name="street2" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="shipGoodsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:itemShippingStatusList" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="itemShippingStatusList">
+<xs:sequence>
+<xs:element name="items" type="tns:itemStatus" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="itemStatus">
+<xs:sequence>
+<xs:element name="item" type="tns:item" minOccurs="0" />
+<xs:element name="not_shipped" type="xs:int" />
+<xs:element name="shipped" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getInfoForCatalog">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="getInfoForCatalogResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:productList" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="productList">
+<xs:sequence>
+<xs:element name="product" type="tns:product" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="product">
+<xs:sequence>
+<xs:element name="manufacturerName" type="xs:string" minOccurs="0" />
+<xs:element name="productName" type="xs:string" minOccurs="0" />
+<xs:element name="productType" type="xs:string" minOccurs="0" />
+<xs:element name="unitPrice" type="xs:float" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

@@ -2,10 +2,10 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/WarehouseService/WarehouseService?wsdl" uri="src/conf/xml-resources/web-service-references/WarehouseService/wsdl/localhost_8080/WarehouseService/WarehouseService.wsdl"/>
     <system systemId="http://localhost:8080/WarehouseService/WarehouseService?xsd=1" uri="src/conf/xml-resources/web-service-references/WarehouseService/wsdl/localhost_8080/WarehouseService/WarehouseService.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/WarehouseService/Warehouse_1Service?wsdl" uri="src/conf/xml-resources/web-service-references/Warehouse_1Service/wsdl/localhost_8080/WarehouseService/Warehouse_1Service.wsdl"/>
-    <system systemId="http://localhost:8080/WarehouseService/Warehouse_1Service?xsd=1" uri="src/conf/xml-resources/web-service-references/Warehouse_1Service/wsdl/localhost_8080/WarehouseService/Warehouse_1Service.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/WarehouseService_2/Warehouse_2Service?wsdl" uri="src/conf/xml-resources/web-service-references/Warehouse_2Service/wsdl/localhost_8080/WarehouseService_2/Warehouse_2Service.wsdl"/>
     <system systemId="http://localhost:8080/WarehouseService_2/Warehouse_2Service?xsd=1" uri="src/conf/xml-resources/web-service-references/Warehouse_2Service/wsdl/localhost_8080/WarehouseService_2/Warehouse_2Service.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/WarehouseService_3/Warehouse_3Service?wsdl" uri="src/conf/xml-resources/web-service-references/Warehouse_3Service/wsdl/localhost_8080/WarehouseService_3/Warehouse_3Service.wsdl"/>
     <system systemId="http://localhost:8080/WarehouseService_3/Warehouse_3Service?xsd=1" uri="src/conf/xml-resources/web-service-references/Warehouse_3Service/wsdl/localhost_8080/WarehouseService_3/Warehouse_3Service.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/WarehouseService/Warehouse_1Service?wsdl" uri="src/conf/xml-resources/web-service-references/Warehouse_1Service/wsdl/localhost_8080/WarehouseService/Warehouse_1Service.wsdl"/>
+    <system systemId="http://localhost:8080/WarehouseService/Warehouse_1Service?xsd=1" uri="src/conf/xml-resources/web-service-references/Warehouse_1Service/wsdl/localhost_8080/WarehouseService/Warehouse_1Service.xsd_1.xsd"/>
 </catalog>

@@ -20,8 +20,8 @@ public class provideCatalog {
     }
 
     private static ProductList getInfoForCatalog() {
-        org.soen487.supplychain.warehouse.WarehouseService service = new org.soen487.supplychain.warehouse.WarehouseService();
-        org.soen487.supplychain.warehouse.Warehouse port = service.getWarehousePort();
+        org.soen487.supplychain.warehouse.Warehouse1Service service = new org.soen487.supplychain.warehouse.Warehouse1Service();
+        org.soen487.supplychain.warehouse.Warehouse1 port = service.getWarehouse1Port();
         return port.getInfoForCatalog(); 
     }
 
