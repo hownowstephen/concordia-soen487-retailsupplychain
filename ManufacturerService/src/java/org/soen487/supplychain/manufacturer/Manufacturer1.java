@@ -73,7 +73,8 @@ public class Manufacturer1 {
         MessageContext ctxt = wsc.getMessageContext();
         ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
         String path = req.getRealPath("WEB-INF");
-        ORDERS_XML = path + "/" + ORDERS_XML;
+        if(!ORDERS_XML.startsWith(path))
+            ORDERS_XML = path + "/" + ORDERS_XML;
 
         File file = new File(ORDERS_XML);
         try{
@@ -130,7 +131,8 @@ public class Manufacturer1 {
         MessageContext ctxt = wsc.getMessageContext();
         ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
         String path = req.getRealPath("WEB-INF");
-        ORDERS_XML = path + "/" + ORDERS_XML;
+        f(!ORDERS_XML.startsWith(path))
+            ORDERS_XML = path + "/" + ORDERS_XML;
 
         if(aPO.getUnitPrice() >= aPO.getProduct().getUnitPrice()){
             if(produce(aPO.getProduct().getProductName(),aPO.getQuantity())){

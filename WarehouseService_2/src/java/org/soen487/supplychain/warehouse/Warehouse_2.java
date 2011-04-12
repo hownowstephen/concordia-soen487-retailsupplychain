@@ -51,7 +51,8 @@ public class Warehouse_2 {
         MessageContext ctxt = wsc.getMessageContext();
         ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT); 
         String path = req.getRealPath("WEB-INF");
-        INVENTORY_XML = path + "/" + INVENTORY_XML;
+        if(!INVENTORY_XML.startsWith(path))
+            INVENTORY_XML = path + "/" + INVENTORY_XML;
 
         File file = new File(INVENTORY_XML);
         try{
@@ -113,7 +114,8 @@ public class Warehouse_2 {
         MessageContext ctxt = wsc.getMessageContext();
         ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
         String path = req.getRealPath("WEB-INF");
-        INVENTORY_XML = path + "/" + INVENTORY_XML;
+        if(!INVENTORY_XML.startsWith(path))
+            INVENTORY_XML = path + "/" + INVENTORY_XML;
         // Performs the replenishing of items in the inventory, if needed
         File file = new File(INVENTORY_XML);
         try{
@@ -189,7 +191,8 @@ public class Warehouse_2 {
         MessageContext ctxt = wsc.getMessageContext();
         ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
         String path = req.getRealPath("WEB-INF");
-        INVENTORY_XML = path + "/" + INVENTORY_XML;
+        if(!INVENTORY_XML.startsWith(path))
+            INVENTORY_XML = path + "/" + INVENTORY_XML;
          try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();

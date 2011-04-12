@@ -48,7 +48,8 @@ public class Warehouse_1 {
         MessageContext ctxt = wsc.getMessageContext();
         ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
         String path = req.getRealPath("WEB-INF");
-        INVENTORY_XML = path + "/" + INVENTORY_XML;
+        if(!INVENTORY_XML.startsWith(path))
+            INVENTORY_XML = path + "/" + INVENTORY_XML;
         System.out.println(System.getProperty("user.dir")); // INDICATE THE WORKING DIR TO HLEP AT RELATIVE PATH SETTING
         File file = new File(INVENTORY_XML);
         try{
@@ -114,7 +115,8 @@ public class Warehouse_1 {
         MessageContext ctxt = wsc.getMessageContext();
         ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
         String path = req.getRealPath("WEB-INF");
-        INVENTORY_XML = path + "/" + INVENTORY_XML;
+        if(!INVENTORY_XML.startsWith(path))
+            INVENTORY_XML = path + "/" + INVENTORY_XML;
         // Performs the replenishing of items in the inventory, if needed
         File file = new File(INVENTORY_XML);
         try{
@@ -195,7 +197,8 @@ public class Warehouse_1 {
         MessageContext ctxt = wsc.getMessageContext();
         ServletContext req = (ServletContext) ctxt.get(ctxt.SERVLET_CONTEXT);
         String path = req.getRealPath("WEB-INF");
-        INVENTORY_XML = path + "/" + INVENTORY_XML;
+        if(!INVENTORY_XML.startsWith(path))
+            INVENTORY_XML = path + "/" + INVENTORY_XML;
          try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
